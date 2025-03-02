@@ -2,3 +2,14 @@ title: "Emma Gueorguieva"
 author: "Emma Gueorguieva"
 description: "Academic CV and Research Profile"
 theme: minima
+
+header_pages:
+  - about.md
+  - cv.md
+  - research.md
+
+minima:
+  social_links:
+    - title: Jekyll repository at GitHub
+      icon: github
+      url: "https://github.com/jekyll/jekyll"
