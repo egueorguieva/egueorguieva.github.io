@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 2rem;
+  font-family: 'Georgia', serif;
+  background-color: #fff;
+  color: #111;
+  cursor: none; 
+}
+
+header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+main {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.25rem;
+}
+
+h2 {
+  margin-top: 2rem;
+}
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at center, rgba(255, 100, 200, 0.5), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+  filter: blur(4px);
+}
