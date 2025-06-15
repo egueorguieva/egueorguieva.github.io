@@ -1,20 +1,47 @@
 body {
   margin: 0;
-  padding: 2rem;
-  font-family: 'Georgia', serif;
-  background-color: #fff;
+  font-family: 'Helvetica Neue', sans-serif;
+  background: #fff;
   color: #111;
-  cursor: none; 
+  line-height: 1.6;
+  padding: 2rem;
+  cursor: default;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+nav {
+  position: fixed;
+  top: 1rem;
+  right: 2rem;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: hotpink;
 }
 
 header {
   text-align: center;
+  margin-top: 6rem;
   margin-bottom: 4rem;
-}
-
-main {
-  max-width: 700px;
-  margin: 0 auto;
 }
 
 h1 {
@@ -22,20 +49,29 @@ h1 {
   margin-bottom: 0.25rem;
 }
 
-h2 {
-  margin-top: 2rem;
+main {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-.cursor {
+h2 {
+  margin-top: 2.5rem;
+}
+
+.cursor-wrapper {
   position: fixed;
   top: 0;
   left: 0;
-  width: 40px;
-  height: 40px;
-  background: radial-gradient(circle at center, rgba(255, 100, 200, 0.5), transparent 70%);
-  border-radius: 50%;
   pointer-events: none;
-  z-index: 9999;
-  mix-blend-mode: multiply;
+  z-index: 999;
+}
+
+.trail {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 105, 180, 0.3), transparent 70%);
   filter: blur(4px);
+  mix-blend-mode: multiply;
 }

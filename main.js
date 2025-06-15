@@ -1,17 +1,22 @@
-const cursor = document.querySelector('.cursor');
-let mouseX = 0, mouseY = 0;
-let currentX = 0, currentY = 0;
+const trails = document.querySelectorAll('.trail');
+let positions = Array.from(trails).map(() => ({ x: 0, y: 0 }));
+let mouse = { x: 0, y: 0 };
 
 document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
 });
 
-function animateCursor() {
-  currentX += (mouseX - currentX) * 0.1;
-  currentY += (mouseY - currentY) * 0.1;
-  cursor.style.transform = `translate(${currentX - 20}px, ${currentY - 20}px)`;
-  requestAnimationFrame(animateCursor);
+function animateTrails() {
+  positions.forEach((pos, i) => {
+    const target = i === 0 ? mouse : positions[i - 1];
+    pos.x += (target.x - pos.x) * 0.2;
+    pos.y += (target.y - pos.y) * 0.2;
+
+    trails[i].style.transform = `translate(${pos.x - 10}px, ${pos.y - 10}px)`;
+  });
+
+  requestAnimationFrame(animateTrails);
 }
 
-animateCursor();
+animateTrails();
