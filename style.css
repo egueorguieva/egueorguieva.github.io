@@ -68,10 +68,11 @@ h2 {
 
 .trail {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 300px;               
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 105, 180, 0.3), transparent 70%);
-  filter: blur(4px);
-  mix-blend-mode: multiply;
+  background: radial-gradient(circle, rgba(255, 105, 180, 0.35), transparent 70%);
+  filter: blur(10px);         
+  mix-blend-mode: screen;    
+  opacity: 0.8;
+  transition: opacity 0.3s ease-out;
 }
