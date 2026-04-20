@@ -1,126 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emma S. Gueorguieva</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --pink: #f9c5d1;
-      --coral: #ff6f61;
-      --beige: #fef6e4;
-      --lavender: #d6a2e8;
-      --font-header: 'Press Start 2P', cursive;
-      --font-body: 'Inter', sans-serif;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--font-body);
-      background: var(--beige);
-      color: #333;
-      padding: 2rem;
-    }
-
-    nav {
-      position: fixed;
-      top: 1rem;
-      right: 2rem;
-      z-index: 1000;
-    }
-
-    nav a {
-      margin-left: 1rem;
-      text-decoration: none;
-      font-weight: 600;
-      color: var(--coral);
-      font-family: var(--font-header);
-      font-size: 0.8rem;
-    }
-
-    header {
-      text-align: center;
-      margin-top: 5rem;
-    }
-
-    .title {
-      font-family: var(--font-header);
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .subtitle {
-      font-size: 1rem;
-      color: #555;
-    }
-
-    .socials {
-      margin-top: 1rem;
-    }
-
-    .socials a {
-      margin: 0 0.5rem;
-      color: var(--lavender);
-      text-decoration: none;
-    }
-
-    .intro-box {
-      max-width: 600px;
-      background: white;
-      border: 2px dashed var(--pink);
-      padding: 1.5rem;
-      margin: 3rem auto;
-      border-radius: 12px;
-      font-size: 1rem;
-    }
-
-    .updates {
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 1rem 1.5rem;
-      background: var(--lavender);
-      border-radius: 10px;
-      color: white;
-    }
-
-    .updates h2 {
-      font-family: var(--font-header);
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .updates ul {
-      padding-left: 1rem;
-    }
-  </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV — Emma Gueorguieva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css"/>
 </head>
-<body>
-<div class="cursor-wrapper">
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
+<body class="dotted">
+
+<div id="fairy-lights-bar" class="fairy-lights-bar"></div>
+
+<nav class="pixel-nav">
+  <a href="index.html">
+    <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="5" width="10" height="7" fill="currentColor"/>
+      <polygon points="6,1 0,6 12,6" fill="currentColor"/>
+      <rect x="4" y="8" width="4" height="4" fill="var(--board-tan)"/>
+    </svg>
+    Home
+  </a>
+  <a href="research.html">
+    <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="1" width="4" height="5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="3" y="6" width="6" height="5" rx="1" fill="currentColor"/>
+      <circle cx="9" cy="3" r="2" fill="currentColor"/>
+    </svg>
+    Research
+  </a>
+  <a href="about.html">
+    <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="6" cy="4" r="3" fill="currentColor"/>
+      <path d="M1 11c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    </svg>
+    About
+  </a>
+  <a href="cv.html">
+    <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="10" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="3" y="4" width="6" height="1.5" fill="currentColor"/>
+      <rect x="3" y="6.5" width="6" height="1.5" fill="currentColor"/>
+      <rect x="3" y="9" width="4" height="1.5" fill="currentColor"/>
+    </svg>
+    CV
+  </a>
+</nav>
+
+<div class="nameplate">Curriculum Vitae</div>
+
+<div class="page-wrap">
+
+  <!-- Download bar -->
+  <div class="cv-download-bar">
+    <span class="cv-download-name">Emma Gueorguieva</span>
+    <a href="cv.pdf" class="cv-download-btn" download>⬇ DOWNLOAD PDF</a>
+  </div>
+
+  <!-- ===== ROW 1: Education | Positions ===== -->
+  <div class="col-2">
+
+    <div class="board-section">
+      <div class="board-section-inner">
+        <div class="section-pill pill-purple">Education</div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">PhD, [Your Department]</div>
+          <div class="cv-entry-sub">[University Name]</div>
+          <div class="cv-entry-year">2024 – Present</div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">MPhil / BA, [Degree]</div>
+          <div class="cv-entry-sub">[University Name]</div>
+          <div class="cv-entry-year">20XX – 20XX</div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">BA (Hons), [Degree]</div>
+          <div class="cv-entry-sub">[University Name] · [Grade / Honours]</div>
+          <div class="cv-entry-year">20XX – 20XX</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="board-section">
+      <div class="board-section-inner">
+        <div class="section-pill pill-pink">Positions</div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Research Intern</div>
+          <div class="cv-entry-sub">[Lab / Company Name]</div>
+          <div class="cv-entry-year">Summer 20XX</div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Research Assistant</div>
+          <div class="cv-entry-sub">[Lab Name], [University]</div>
+          <div class="cv-entry-year">20XX – 20XX</div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Research Assistant</div>
+          <div class="cv-entry-sub">[Another Lab], [University]</div>
+          <div class="cv-entry-year">20XX – 20XX</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- row 1 -->
+
+  <!-- ===== ROW 2: Talks | Awards ===== -->
+  <div class="col-2">
+
+    <div class="board-section">
+      <div class="board-section-inner">
+        <div class="section-pill pill-orange">Talks &amp; Presentations</div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Talk Title Goes Here</div>
+          <div class="cv-entry-sub">Conference / Workshop Name</div>
+          <div class="cv-entry-year">Apr 2025</div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Another Talk or Poster</div>
+          <div class="cv-entry-sub">Conference Name · Poster</div>
+          <div class="cv-entry-year">Nov 2024</div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Invited Guest Lecture</div>
+          <div class="cv-entry-sub">[Course / Department], [University]</div>
+          <div class="cv-entry-year">Feb 2024</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="board-section">
+      <div class="board-section-inner">
+        <div class="section-pill pill-teal">Awards &amp; Funding</div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title"><span class="cv-award-star">★</span>Fellowship Name</div>
+          <div class="cv-entry-sub">[Funding Body]</div>
+          <div class="cv-entry-year">2024</div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title"><span class="cv-award-star">★</span>Award Name</div>
+          <div class="cv-entry-sub">[Awarding Institution] · Best X Award</div>
+          <div class="cv-entry-year">2023</div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Travel Grant</div>
+          <div class="cv-entry-sub">[Conference] Travel Award</div>
+          <div class="cv-entry-year">2023</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- row 2 -->
+
+  <!-- ===== ROW 3: Skills | Teaching | Service ===== -->
+  <div class="col-3">
+
+    <div class="board-section">
+      <div class="board-section-inner">
+        <div class="section-pill pill-purple">Skills</div>
+
+        <div style="margin-bottom:8px;">
+          <span class="skill-tag tag-purple">Python</span>
+          <span class="skill-tag tag-purple">PyTorch</span>
+          <span class="skill-tag tag-purple">HuggingFace</span>
+          <span class="skill-tag tag-pink">R</span>
+          <span class="skill-tag tag-pink">Mixed Models</span>
+          <span class="skill-tag tag-teal">JavaScript</span>
+          <span class="skill-tag tag-teal">HTML/CSS</span>
+          <span class="skill-tag tag-orange">Psychopy</span>
+          <span class="skill-tag tag-orange">Experiment Design</span>
+          <span class="skill-tag tag-purple">NLP</span>
+          <span class="skill-tag tag-pink">Pragmatics</span>
+          <span class="skill-tag tag-teal">Git</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="board-section">
+      <div class="board-section-inner">
+        <div class="section-pill pill-orange">Teaching</div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Teaching Assistant</div>
+          <div class="cv-entry-sub">[Course Name], [Dept]</div>
+          <div class="cv-entry-year">2024–2025</div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Teaching Assistant</div>
+          <div class="cv-entry-sub">[Another Course]</div>
+          <div class="cv-entry-year">2023–2024</div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Workshop Instructor</div>
+          <div class="cv-entry-sub">[Workshop Name / Outreach]</div>
+          <div class="cv-entry-year">2023</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="board-section">
+      <div class="board-section-inner">
+        <div class="section-pill pill-teal">Service</div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Reviewer</div>
+          <div class="cv-entry-sub">ACL, EMNLP, NAACL</div>
+          <div class="cv-entry-year">2024–</div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Organizer</div>
+          <div class="cv-entry-sub">[Workshop or Reading Group]</div>
+          <div class="cv-entry-year">2023–</div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-title">Dept. Student Rep</div>
+          <div class="cv-entry-sub">[Department / Committee]</div>
+          <div class="cv-entry-year">2024</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- row 3 -->
+
+</div><!-- end .page-wrap -->
+
+<!-- Pixel cat -->
+<div class="pixel-cat" id="pixel-cat">
+  <div class="zzz-wrap">
+    <span class="zzz">z</span>
+    <span class="zzz">z</span>
+    <span class="zzz">z</span>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="38" viewBox="0 0 48 38" style="image-rendering:pixelated">
+    <rect x="4"  y="0"  width="8" height="10" fill="#1a1a1a"/>
+    <rect x="5"  y="1"  width="5" height="7"  fill="#ff9eb5"/>
+    <rect x="20" y="0"  width="8" height="10" fill="#1a1a1a"/>
+    <rect x="21" y="1"  width="5" height="7"  fill="#ff9eb5"/>
+    <rect x="2"  y="8"  width="28" height="18" rx="2" fill="#1a1a1a"/>
+    <rect x="7"  y="16" width="6"  height="2" fill="white" rx="1"/>
+    <rect x="19" y="16" width="6"  height="2" fill="white" rx="1"/>
+    <rect x="14" y="20" width="4"  height="2" fill="#ff9eb5"/>
+    <rect x="4"  y="24" width="26" height="12" rx="2" fill="#1a1a1a"/>
+    <rect x="6"  y="33" width="7"  height="5" rx="2" fill="#1a1a1a"/>
+    <rect x="21" y="33" width="7"  height="5" rx="2" fill="#1a1a1a"/>
+    <g class="cat-tail-group">
+      <rect x="30" y="27" width="12" height="5" rx="2" fill="#1a1a1a"/>
+      <rect x="38" y="22" width="5"  height="8" rx="2" fill="#1a1a1a"/>
+    </g>
+  </svg>
 </div>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="research.html">Research</a>
-    <a href="cv.html">CV</a>
-  </nav>
-
-  <header>
-    <div class="title">CV Page</div>
-  </header>
-
-
-<script src="main.js"></script>
+<script src="js/shared.js"></script>
 </body>
 </html>

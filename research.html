@@ -1,125 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emma S. Gueorguieva</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --pink: #f9c5d1;
-      --coral: #ff6f61;
-      --beige: #fef6e4;
-      --lavender: #d6a2e8;
-      --font-header: 'Press Start 2P', cursive;
-      --font-body: 'Inter', sans-serif;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--font-body);
-      background: var(--beige);
-      color: #333;
-      padding: 2rem;
-    }
-
-    nav {
-      position: fixed;
-      top: 1rem;
-      right: 2rem;
-      z-index: 1000;
-    }
-
-    nav a {
-      margin-left: 1rem;
-      text-decoration: none;
-      font-weight: 600;
-      color: var(--coral);
-      font-family: var(--font-header);
-      font-size: 0.8rem;
-    }
-
-    header {
-      text-align: center;
-      margin-top: 5rem;
-    }
-
-    .title {
-      font-family: var(--font-header);
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .subtitle {
-      font-size: 1rem;
-      color: #555;
-    }
-
-    .socials {
-      margin-top: 1rem;
-    }
-
-    .socials a {
-      margin: 0 0.5rem;
-      color: var(--lavender);
-      text-decoration: none;
-    }
-
-    .intro-box {
-      max-width: 600px;
-      background: white;
-      border: 2px dashed var(--pink);
-      padding: 1.5rem;
-      margin: 3rem auto;
-      border-radius: 12px;
-      font-size: 1rem;
-    }
-
-    .updates {
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 1rem 1.5rem;
-      background: var(--lavender);
-      border-radius: 10px;
-      color: white;
-    }
-
-    .updates h2 {
-      font-family: var(--font-header);
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .updates ul {
-      padding-left: 1rem;
-    }
-  </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Research — Emma Gueorguieva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css"/>
 </head>
-<body>
-<div class="cursor-wrapper">
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
-  <div class="trail"></div>
+<body class="dotted">
+
+<div id="fairy-lights-bar" class="fairy-lights-bar"></div>
+
+<nav class="pixel-nav">
+  <a href="index.html">
+    <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="5" width="10" height="7" fill="currentColor"/>
+      <polygon points="6,1 0,6 12,6" fill="currentColor"/>
+      <rect x="4" y="8" width="4" height="4" fill="var(--board-tan)"/>
+    </svg>
+    Home
+  </a>
+  <a href="research.html">
+    <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="1" width="4" height="5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="3" y="6" width="6" height="5" rx="1" fill="currentColor"/>
+      <circle cx="9" cy="3" r="2" fill="currentColor"/>
+    </svg>
+    Research
+  </a>
+  <a href="about.html">
+    <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="6" cy="4" r="3" fill="currentColor"/>
+      <path d="M1 11c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    </svg>
+    About
+  </a>
+  <a href="cv.html">
+    <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="10" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="3" y="4" width="6" height="1.5" fill="currentColor"/>
+      <rect x="3" y="6.5" width="6" height="1.5" fill="currentColor"/>
+      <rect x="3" y="9" width="4" height="1.5" fill="currentColor"/>
+    </svg>
+    CV
+  </a>
+</nav>
+
+<div class="nameplate">Research</div>
+
+<div class="page-wrap">
+
+  <!-- ===== PUBLICATIONS (full width) ===== -->
+  <div class="board-section">
+    <div class="board-section-inner">
+      <div class="section-pill pill-pink">Publications</div>
+
+      <!-- Most recent paper — NEW! badge -->
+      <div class="paper-card">
+        <div style="margin-bottom:6px;">
+          <span class="topic-tag tag-purple">NLP</span>
+          <span class="topic-tag tag-pink">Dialogue</span>
+          <span class="topic-tag tag-teal">HCI</span>
+        </div>
+        <div class="paper-title">
+          Paper Title Goes Here: A Study of Something Interesting
+          <span class="badge-new">NEW!</span>
+        </div>
+        <div class="paper-authors">E. Gueorguieva, Co-Author A, Co-Author B</div>
+        <div class="paper-venue">Venue Name 2025 · Conference / Journal</div>
+        <div class="paper-links">
+          <a href="#">[PDF]</a>
+          <a href="#">[CITE]</a>
+          <a href="#">[CODE]</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div style="margin-bottom:6px;">
+          <span class="topic-tag tag-orange">Cognitive Science</span>
+          <span class="topic-tag tag-pink">Language</span>
+        </div>
+        <div class="paper-title">Another Paper Title: More Interesting Things Studied Here</div>
+        <div class="paper-authors">E. Gueorguieva, Co-Author C</div>
+        <div class="paper-venue">Venue Name 2024 · Workshop at Big Conference</div>
+        <div class="paper-links">
+          <a href="#">[PDF]</a>
+          <a href="#">[CITE]</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div style="margin-bottom:6px;">
+          <span class="topic-tag tag-teal">Pragmatics</span>
+          <span class="topic-tag tag-purple">NLP</span>
+        </div>
+        <div class="paper-title">A Third Paper About Something I Worked On</div>
+        <div class="paper-authors">Co-Author D, E. Gueorguieva, Co-Author E</div>
+        <div class="paper-venue">Venue Name 2023 · Main Conference</div>
+        <div class="paper-links">
+          <a href="#">[PDF]</a>
+          <a href="#">[CITE]</a>
+          <a href="#">[SLIDES]</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== PROJECTS ROW (2 col) ===== -->
+  <div class="col-2">
+
+    <!-- Current Projects (left) -->
+    <div class="board-section">
+      <div class="board-section-inner">
+        <div class="section-pill pill-orange">Current Projects</div>
+
+        <div class="paper-card">
+          <span class="badge-progress">IN PROGRESS</span>
+          <div class="paper-title" style="margin-top:6px;">Project One: Working Title</div>
+          <div class="paper-authors" style="margin-top:4px;font-size:0.68rem;">A brief description of what this project is exploring and why it's interesting. Placeholder text for now.</div>
+        </div>
+
+        <div class="paper-card">
+          <span class="badge-progress">IN PROGRESS</span>
+          <div class="paper-title" style="margin-top:6px;">Project Two: Another Direction</div>
+          <div class="paper-authors" style="margin-top:4px;font-size:0.68rem;">Another exciting project in progress. More details to follow when things are more cooked.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Past Projects (right) -->
+    <div class="board-section">
+      <div class="board-section-inner">
+        <div class="section-pill pill-purple">Past Projects</div>
+
+        <div class="paper-card">
+          <span class="badge-complete">COMPLETED</span>
+          <div class="paper-title" style="margin-top:6px;">Past Project One: The Finished Thing</div>
+          <div class="paper-authors" style="margin-top:4px;font-size:0.68rem;">Description of a completed project. Led to a publication. Really fun work.</div>
+          <div class="paper-links" style="margin-top:6px;"><a href="#">[paper →]</a></div>
+        </div>
+
+        <div class="paper-card">
+          <span class="badge-complete">COMPLETED</span>
+          <div class="paper-title" style="margin-top:6px;">Phaser Game Project</div>
+          <div class="paper-authors" style="margin-top:4px;font-size:0.68rem;">An interactive game built as part of research on X. Try it below!</div>
+          <div class="paper-links" style="margin-top:6px;"><a href="#">[paper →]</a></div>
+          <!-- Game embed -->
+          <div class="game-card">
+            <div class="game-card-title">▶ PLAY IN BROWSER</div>
+            <iframe
+              src="https://your-game-url.github.io"
+              height="300"
+              title="Research Game"
+              allow="fullscreen"
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end .col-2 -->
+
+</div><!-- end .page-wrap -->
+
+<!-- Pixel cat -->
+<div class="pixel-cat" id="pixel-cat">
+  <div class="zzz-wrap">
+    <span class="zzz">z</span>
+    <span class="zzz">z</span>
+    <span class="zzz">z</span>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="38" viewBox="0 0 48 38" style="image-rendering:pixelated">
+    <rect x="4"  y="0"  width="8" height="10" fill="#1a1a1a"/>
+    <rect x="5"  y="1"  width="5" height="7"  fill="#ff9eb5"/>
+    <rect x="20" y="0"  width="8" height="10" fill="#1a1a1a"/>
+    <rect x="21" y="1"  width="5" height="7"  fill="#ff9eb5"/>
+    <rect x="2"  y="8"  width="28" height="18" rx="2" fill="#1a1a1a"/>
+    <rect x="7"  y="16" width="6"  height="2" fill="white" rx="1"/>
+    <rect x="19" y="16" width="6"  height="2" fill="white" rx="1"/>
+    <rect x="14" y="20" width="4"  height="2" fill="#ff9eb5"/>
+    <rect x="4"  y="24" width="26" height="12" rx="2" fill="#1a1a1a"/>
+    <rect x="6"  y="33" width="7"  height="5" rx="2" fill="#1a1a1a"/>
+    <rect x="21" y="33" width="7"  height="5" rx="2" fill="#1a1a1a"/>
+    <g class="cat-tail-group">
+      <rect x="30" y="27" width="12" height="5" rx="2" fill="#1a1a1a"/>
+      <rect x="38" y="22" width="5"  height="8" rx="2" fill="#1a1a1a"/>
+    </g>
+  </svg>
 </div>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="research.html">Research</a>
-    <a href="cv.html">CV</a>
-  </nav>
-
-  <header>
-    <div class="title">Research Page</div>
-  </header>
-
-<script src="main.js"></script>
+<script src="js/shared.js"></script>
 </body>
 </html>

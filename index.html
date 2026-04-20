@@ -1,130 +1,825 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emma S. Gueorguieva</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emma Gueorguieva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css"/>
   <style>
-    :root {
-      --pink: #f9c5d1;
-      --coral: #ff6f61;
-      --beige: #fef6e4;
-      --lavender: #d6a2e8;
-      --font-header: 'Press Start 2P', cursive;
-      --font-body: 'Inter', sans-serif;
-    }
+    /* ---- Room scene ---- */
 
-    body {
-      margin: 0;
-      font-family: var(--font-body);
-      background: var(--beige);
-      color: #333;
-      padding: 2rem;
-    }
-
-    nav {
-      position: fixed;
-      top: 1rem;
-      right: 2rem;
-      z-index: 1000;
-    }
-
-    nav a {
-      margin-left: 1rem;
-      text-decoration: none;
-      font-weight: 600;
-      color: var(--coral);
-      font-family: var(--font-header);
-      font-size: 0.8rem;
-    }
-
-    header {
+    .home-header {
+      width: 100%;
       text-align: center;
-      margin-top: 5rem;
+      padding-bottom: 2px;
     }
 
-    .title {
-      font-family: var(--font-header);
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
+    .room {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 62px);
+      min-height: 540px;
+      margin: 0 0 0;
+      background: var(--wall);
+      border-top: 4px solid var(--board-frame);
+      border-bottom: 4px solid var(--board-frame);
+      box-shadow: 0 6px 0 var(--board-dark);
+      overflow: hidden;
     }
 
-    .subtitle {
-      font-size: 1rem;
-      color: #555;
+    /* subtle dot on wall */
+    .room::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 130px 0;
+      background-image: radial-gradient(circle, #f0b8a0 1px, transparent 1px);
+      background-size: 22px 22px;
+      opacity: .18;
+      pointer-events: none;
     }
 
-    .socials {
-      margin-top: 1rem;
+    /* ---- Floor ---- */
+    .room-floor {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 130px;
+      background: #c9966a;
+      background-image: repeating-linear-gradient(90deg,transparent,transparent 63px,rgba(0,0,0,.05) 63px,rgba(0,0,0,.05) 64px);
+    }
+    .room-floor::before {
+      content: '';
+      display: block;
+      height: 7px;
+      background: #a07040;
     }
 
-    .socials a {
-      margin: 0 0.5rem;
-      color: var(--lavender);
+    /* ---- Window (left) ---- */
+    .room-window {
+      position: absolute;
+      left: 22px; top: 48px;
+      width: 188px; height: 246px;
+      z-index: 3;
+    }
+    .window-frame {
+      position: relative;
+      width: 100%; height: 100%;
+      background: #f8f8f0;
+      border: 6px solid #e8dcc8;
+      box-shadow: 3px 3px 0 #c0a878, inset 0 0 0 3px #fff;
+    }
+    .window-glass {
+      position: absolute;
+      inset: 6px;
+      background: linear-gradient(180deg, #cde8f8 0%, #e8f4fc 60%, #d4ecf8 100%);
+      overflow: hidden;
+    }
+    .window-bar-h {
+      position: absolute;
+      left: 6px; right: 6px; top: 50%;
+      height: 4px; background: #e8dcc8; z-index: 2;
+    }
+    .window-bar-v {
+      position: absolute;
+      top: 6px; bottom: 6px; left: 50%;
+      width: 4px; background: #e8dcc8; z-index: 2;
+    }
+    /* Clouds */
+    .cloud {
+      position: absolute;
+      background: rgba(255,255,255,.92);
+      border-radius: 20px;
+    }
+    .c1 {
+      width: 44px; height: 18px;
+      top: 22px; left: 12px;
+      box-shadow: 14px -8px 0 6px rgba(255,255,255,.92), 28px -4px 0 4px rgba(255,255,255,.92);
+      animation: cloud-drift 7s ease-in-out infinite;
+    }
+    .c2 {
+      width: 32px; height: 14px;
+      top: 78px; left: 50px;
+      box-shadow: 10px -6px 0 5px rgba(255,255,255,.92);
+      animation: cloud-drift 9s ease-in-out 2s infinite reverse;
+    }
+    .c3 {
+      width: 28px; height: 10px;
+      top: 148px; left: 20px;
+      box-shadow: 9px -5px 0 4px rgba(255,255,255,.92);
+      animation: cloud-drift 6s ease-in-out 1s infinite;
+    }
+    @keyframes cloud-drift {
+      0%,100% { transform: translateX(0); }
+      50%      { transform: translateX(11px); }
+    }
+    /* Curtains */
+    .curtain {
+      position: absolute;
+      top: -4px; bottom: -4px;
+      width: 30px;
+      background: rgba(255,252,248,.88);
+      border: 2px solid #e8dcc8;
+      z-index: 4;
+    }
+    .curtain-l { left: -4px; }
+    .curtain-r { right: -4px; }
+
+    /* ---- Bookshelf (right wall) ---- */
+    .room-bookshelf {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 172px;
+      z-index: 5;
+    }
+    .shelf-case {
+      width: 100%; height: 100%;
+      background: #7a4c2a;
+      border-left: 6px solid #5a3010;
+      box-shadow: -3px 0 0 #3a1a00;
+      display: flex;
+      flex-direction: column;
+    }
+    .shelf-plank {
+      height: 10px;
+      background: #9a6030;
+      border-top: 2px solid #b07840;
+      border-bottom: 2px solid #5a3010;
+      flex-shrink: 0;
+    }
+    .shelf-row {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      padding: 4px 8px 0;
+      gap: 2px;
+      overflow: hidden;
+    }
+    .book {
+      width: var(--bw, 13px);
+      height: var(--bh, 80%);
+      background: var(--bc, #999);
+      flex-shrink: 0;
+      box-shadow: inset -2px 0 0 rgba(0,0,0,.2), inset 0 -3px 0 rgba(0,0,0,.15);
+    }
+
+    /* ---- Corkboard (center-left) ---- */
+    .room-corkboard {
+      position: absolute;
+      left: 240px; top: 22px;
+      width: 480px; height: 360px;
+      z-index: 4;
+    }
+    .cork-frame {
+      width: 100%; height: 100%;
+      background: var(--board-frame);
+      padding: 6px;
+      box-shadow: 4px 4px 0 var(--board-dark), inset 0 0 0 2px #d4a050;
+    }
+    .cork-surface {
+      width: 100%; height: 100%;
+      background: var(--board-tan);
+      background-image: radial-gradient(circle, rgba(0,0,0,.06) 1px, transparent 1px);
+      background-size: 8px 8px;
+      position: relative;
+      padding: 8px;
+      overflow: hidden;
+    }
+    /* Pushpins */
+    .pin {
+      position: absolute;
+      width: 8px; height: 8px;
+      background: var(--pc, var(--hot-pink));
+      border-radius: 50%;
+      box-shadow: 1px 1px 0 rgba(0,0,0,.3);
+      z-index: 10;
+    }
+    /* Sticky notes */
+    .sticky {
+      position: absolute;
+      padding: 6px 7px 5px;
+      font-size: 0.58rem;
+      line-height: 1.5;
+      color: #3a2a10;
+      box-shadow: 2px 2px 0 rgba(0,0,0,.18);
+      max-width: 110px;
+    }
+    .sticky::before {
+      content: '★';
+      display: block;
+      font-size: 6px;
+      color: rgba(0,0,0,.25);
+      margin-bottom: 2px;
+    }
+    /* Photo carousel */
+    .photo-carousel {
+      position: absolute;
+      right: 10px; bottom: 10px;
+      width: 200px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .car-frame {
+      flex: 1;
+      height: 130px;
+      background: #bbb;
+      border: 2px solid var(--board-frame);
+      box-shadow: 2px 2px 0 var(--board-dark);
+      overflow: hidden;
+      position: relative;
+    }
+    .car-slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      background-size: cover;
+      background-position: center;
+    }
+    .car-slide.active { display: block; }
+    /* Placeholder slide patterns */
+    .car-slide:nth-child(1) { background-color: #c8d8e8; background-image: repeating-linear-gradient(45deg,rgba(255,255,255,.1) 0,rgba(255,255,255,.1) 1px,transparent 0,transparent 50%); background-size: 10px 10px; }
+    .car-slide:nth-child(2) { background-color: #e8c8d8; }
+    .car-slide:nth-child(3) { background-color: #d8e8c8; }
+    .car-btn {
+      font-family: var(--font-pixel);
+      font-size: 6px;
+      background: var(--board-frame);
+      border: 2px solid var(--board-dark);
+      color: var(--dark);
+      padding: 4px 5px;
+      cursor: pointer;
+      box-shadow: 1px 1px 0 var(--board-dark);
+      flex-shrink: 0;
+      transition: transform .1s;
+    }
+    .car-btn:hover { transform: scale(1.1); }
+
+    /* ---- Desk ---- */
+    .room-desk {
+      position: absolute;
+      left: 214px; right: 180px;
+      bottom: 126px;
+      height: 54px;
+      z-index: 6;
+    }
+    .desk-top {
+      height: 12px;
+      background: #9d6c38;
+      box-shadow: inset 0 2px 0 #b88040;
+    }
+    .desk-body {
+      height: 42px;
+      background: #7a5020;
+    }
+    .desk-leg {
+      position: absolute;
+      bottom: -36px;
+      width: 14px; height: 36px;
+      background: #7a5020;
+      box-shadow: inset -2px 0 0 rgba(0,0,0,.2);
+    }
+    .desk-leg-l { left: 18px; }
+    .desk-leg-r { right: 18px; }
+
+    /* ---- Lamp ---- */
+    .room-lamp {
+      position: absolute;
+      left: 228px; bottom: 180px;
+      width: 60px; height: 90px;
+      z-index: 7;
+    }
+    .lamp-base {
+      position: absolute;
+      bottom: 0; left: 20px;
+      width: 20px; height: 6px;
+      background: #555;
+    }
+    .lamp-pole {
+      position: absolute;
+      bottom: 6px; left: 28px;
+      width: 4px; height: 55px;
+      background: #555;
+    }
+    .lamp-arm {
+      position: absolute;
+      bottom: 60px; left: 20px;
+      width: 28px; height: 4px;
+      background: #555;
+      transform: rotate(-20deg);
+      transform-origin: right center;
+    }
+    .lamp-shade {
+      position: absolute;
+      top: 0; left: 4px;
+      width: 0; height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 26px solid var(--orange);
+      filter: drop-shadow(0 2px 1px rgba(0,0,0,.2));
+    }
+    .lamp-glow {
+      position: absolute;
+      top: 18px; left: -8px;
+      width: 76px; height: 50px;
+      background: radial-gradient(ellipse at top, rgba(255,180,60,.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ---- Computer (nav hub) ---- */
+    .room-computer {
+      position: absolute;
+      left: 330px; bottom: 177px;
+      width: 230px; height: 178px;
+      z-index: 7;
+    }
+    .monitor-back {
+      position: absolute;
+      top: 0; left: 8px;
+      width: 214px; height: 142px;
+      background: #555;
+      border: 3px solid #333;
+      box-shadow: 3px 3px 0 #222;
+    }
+    .monitor-screen {
+      position: absolute;
+      top: 8px; left: 20px;
+      width: 182px; height: 126px;
+      background: #0a1a2e;
+      overflow: hidden;
+    }
+    .monitor-stand {
+      position: absolute;
+      bottom: 30px; left: 105px;
+      width: 20px; height: 22px;
+      background: #555;
+    }
+    .keyboard {
+      position: absolute;
+      bottom: 4px; left: 6px;
+      width: 218px; height: 20px;
+      background: #777;
+      border: 2px solid #555;
+      box-shadow: 2px 2px 0 #333;
+      background-image: repeating-linear-gradient(90deg,rgba(0,0,0,.15) 0,rgba(0,0,0,.15) 1px,transparent 0,transparent 10px);
+    }
+    /* Screen icon grid */
+    .screen-icons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 6px;
+      padding: 10px;
+      height: 100%;
+    }
+    .screen-icon-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
       text-decoration: none;
+      border: 1px solid transparent;
+      padding: 4px;
+      transition: background .1s, border-color .1s;
+    }
+    .screen-icon-link:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.25);
+    }
+    .screen-icon-link.active {
+      background: rgba(255,107,157,.18);
+      border-color: var(--hot-pink);
+    }
+    .screen-icon-link svg {
+      width: 20px; height: 20px;
+    }
+    .screen-icon-label {
+      font-family: var(--font-pixel);
+      font-size: 5px;
+      color: #ffe8d8;
+      text-align: center;
+      line-height: 1;
     }
 
-    .intro-box {
-      max-width: 600px;
-      background: white;
-      border: 2px dashed var(--pink);
-      padding: 1.5rem;
-      margin: 3rem auto;
-      border-radius: 12px;
-      font-size: 1rem;
+    /* ---- Coffee mug ---- */
+    .room-mug {
+      position: absolute;
+      left: 512px; bottom: 176px;
+      width: 36px; height: 42px;
+      z-index: 7;
+    }
+    .mug-body {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 26px; height: 30px;
+      background: var(--pink);
+      border: 2px solid #d060a0;
+      box-shadow: 1px 1px 0 #a04080;
+    }
+    .mug-handle {
+      position: absolute;
+      bottom: 6px; right: 0;
+      width: 10px; height: 16px;
+      border: 3px solid #d060a0;
+      border-left: none;
+      border-radius: 0 6px 6px 0;
+    }
+    .mug-steam {
+      position: absolute;
+      bottom: 30px; left: 2px;
+      width: 24px; height: 16px;
+      display: flex; gap: 3px; align-items: flex-end;
+    }
+    .steam-line {
+      flex: 1;
+      height: 14px;
+      background: rgba(210,210,210,.7);
+      border-radius: 2px;
+      animation: steam-rise 1.8s ease-out infinite;
+    }
+    .steam-line:nth-child(2) { animation-delay: .6s; height: 10px; }
+    .steam-line:nth-child(3) { animation-delay: 1.2s; }
+    @keyframes steam-rise {
+      0%   { transform: translateY(0) scaleX(1); opacity: .7; }
+      100% { transform: translateY(-16px) scaleX(.3); opacity: 0; }
     }
 
-    .updates {
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 1rem 1.5rem;
-      background: var(--lavender);
-      border-radius: 10px;
-      color: white;
+    /* ---- Papers → research.html ---- */
+    .room-papers {
+      position: absolute;
+      right: 196px; bottom: 176px;
+      width: 80px; height: 48px;
+      z-index: 7;
+    }
+    .paper {
+      position: absolute;
+      background: #fffcf4;
+      border: 1px solid #ccc;
+      box-shadow: 1px 1px 0 rgba(0,0,0,.1);
+    }
+    .p1 { width: 58px; height: 44px; top: 0; left: 10px; transform: rotate(-2deg); z-index: 3; }
+    .p2 { width: 58px; height: 44px; top: 2px; left: 4px; transform: rotate(2deg);  z-index: 2; }
+    .p3 { width: 58px; height: 44px; top: 4px; left: 0;   transform: rotate(-4deg); z-index: 1; }
+    .paper::after {
+      content: '';
+      position: absolute;
+      top: 6px; left: 5px; right: 5px;
+      height: 2px; background: #ddd;
+      box-shadow: 0 5px 0 #ddd, 0 10px 0 #ddd, 0 15px 0 #ddd, 0 20px 0 #ddd;
     }
 
-    .updates h2 {
-      font-family: var(--font-header);
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
+    /* ---- Pink rug ---- */
+    .room-rug {
+      position: absolute;
+      left: 50%; bottom: 126px;
+      transform: translateX(-50%);
+      width: 310px; height: 52px;
+      background: var(--pink);
+      border: 4px solid #e060a0;
+      box-shadow: 2px 2px 0 #a04080;
+      z-index: 2;
+      background-image: radial-gradient(circle, rgba(255,255,255,.15) 1px, transparent 1px);
+      background-size: 12px 12px;
+    }
+    .room-rug::before {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border: 2px solid rgba(255,255,255,.3);
     }
 
-    .updates ul {
-      padding-left: 1rem;
+    /* ---- Cat bed ---- */
+    .cat-bed {
+      position: absolute;
+      left: 22px; bottom: 128px;
+      width: 74px; height: 36px;
+      z-index: 3;
+    }
+    .cat-bed-outer {
+      width: 100%; height: 100%;
+      background: #e080b8;
+      border: 3px solid #b04080;
+      border-radius: 50%;
+      box-shadow: 2px 2px 0 #803060;
+    }
+    .cat-bed-inner {
+      position: absolute;
+      inset: 6px;
+      background: #f4a0cc;
+      border-radius: 50%;
+    }
+
+    /* ---- Room fairy lights (inside top of room) ---- */
+    .room-lights {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 28px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* ---- Mobile fallback ---- */
+    @media (max-width: 680px) {
+      .room { height: calc(100vh - 120px); min-height: 380px; }
+      .room-corkboard { width: 200px; height: 180px; left: 200px; }
+      .room-bookshelf { width: 120px; }
+      .room-desk { right: 130px; }
     }
   </style>
 </head>
 <body>
-  <div class="cursor"></div>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="research.html">Research</a>
-    <a href="cv.html">CV</a>
+<!-- Fairy lights bar (page top) -->
+<div id="fairy-lights-bar" class="fairy-lights-bar"></div>
+
+<!-- Site header -->
+<div class="home-header">
+  <nav class="pixel-nav">
+    <a href="index.html">
+      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="5" width="10" height="7" fill="currentColor"/>
+        <polygon points="6,1 0,6 12,6" fill="currentColor"/>
+        <rect x="4" y="8" width="4" height="4" fill="#fdf6ee"/>
+      </svg>
+      Home
+    </a>
+    <a href="research.html">
+      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="1" width="4" height="6" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="3" y="7" width="6" height="4" rx="1" fill="currentColor"/>
+        <rect x="5" y="9" width="2" height="3" fill="currentColor"/>
+        <circle cx="9" cy="3" r="2" fill="currentColor"/>
+      </svg>
+      Research
+    </a>
+    <a href="about.html">
+      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="6" cy="4" r="3" fill="currentColor"/>
+        <path d="M1 11c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+      About
+    </a>
+    <a href="cv.html">
+      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="10" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="3" y="4" width="6" height="1.5" fill="currentColor"/>
+        <rect x="3" y="6.5" width="6" height="1.5" fill="currentColor"/>
+        <rect x="3" y="9" width="4" height="1.5" fill="currentColor"/>
+      </svg>
+      CV
+    </a>
   </nav>
+</div>
 
-  <header>
-    <div class="title">Emma Gueorguieva</div>
-    <div class="subtitle"> Doctoral Student </div>
-<!--     <div class="socials">
-      <a href="mailto:youremail@example.com">📧</a>
-      <a href="https://github.com/yourgithub">🐱</a>
-    </div> -->
-  </header>
+<!-- ==================== ROOM SCENE ==================== -->
+<div class="room" id="room">
 
-  <section class="intro-box">
-    <p>lorem ipsum</p>
-  </section>
+  <!-- fairy lights inside room top -->
+  <div class="room-lights" id="room-lights-inner"></div>
 
-  <section class="updates">
-    <h2> News </h2>
-    <ul>
-      <li> lorem ipsum </li>
-    </ul>
-  </section>
+  <!-- WINDOW -->
+  <div class="room-window">
+    <div class="window-frame">
+      <div class="window-glass">
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+        <div class="cloud c3"></div>
+      </div>
+      <div class="window-bar-h"></div>
+      <div class="window-bar-v"></div>
+    </div>
+    <div class="curtain curtain-l"></div>
+    <div class="curtain curtain-r"></div>
+  </div>
 
-<script src="main.js"></script>
+  <!-- BOOKSHELF → research.html -->
+  <a href="research.html" class="room-link room-bookshelf" data-tip="[ research → ]" style="z-index:5;">
+    <div class="shelf-case">
+      <div class="shelf-plank"></div>
+      <div class="shelf-row">
+        <div class="book" style="--bw:11px;--bh:75%;--bc:#ff6b9d"></div>
+        <div class="book" style="--bw:14px;--bh:85%;--bc:#ffb347"></div>
+        <div class="book" style="--bw:10px;--bh:70%;--bc:#c084fc"></div>
+        <div class="book" style="--bw:16px;--bh:88%;--bc:#7ecac0"></div>
+        <div class="book" style="--bw:12px;--bh:65%;--bc:#ffe066"></div>
+        <div class="book" style="--bw:11px;--bh:80%;--bc:#ff9eb5"></div>
+        <div class="book" style="--bw:14px;--bh:90%;--bc:#2a1a3e"></div>
+        <div class="book" style="--bw:10px;--bh:72%;--bc:#7ecac0"></div>
+        <div class="book" style="--bw:13px;--bh:82%;--bc:#c084fc"></div>
+      </div>
+      <div class="shelf-plank"></div>
+      <div class="shelf-row">
+        <div class="book" style="--bw:15px;--bh:88%;--bc:#ff9eb5"></div>
+        <div class="book" style="--bw:12px;--bh:78%;--bc:#2a1a3e"></div>
+        <div class="book" style="--bw:10px;--bh:68%;--bc:#ffb347"></div>
+        <div class="book" style="--bw:14px;--bh:84%;--bc:#ff6b9d"></div>
+        <div class="book" style="--bw:11px;--bh:72%;--bc:#c084fc"></div>
+        <div class="book" style="--bw:13px;--bh:90%;--bc:#7ecac0"></div>
+        <div class="book" style="--bw:12px;--bh:76%;--bc:#ffe066"></div>
+        <div class="book" style="--bw:10px;--bh:82%;--bc:#ff9eb5"></div>
+      </div>
+      <div class="shelf-plank"></div>
+      <div class="shelf-row">
+        <div class="book" style="--bw:13px;--bh:70%;--bc:#c084fc"></div>
+        <div class="book" style="--bw:10px;--bh:80%;--bc:#ff6b9d"></div>
+        <div class="book" style="--bw:16px;--bh:88%;--bc:#ffb347"></div>
+        <div class="book" style="--bw:11px;--bh:65%;--bc:#2a1a3e"></div>
+        <div class="book" style="--bw:14px;--bh:85%;--bc:#7ecac0"></div>
+        <div class="book" style="--bw:12px;--bh:75%;--bc:#ff9eb5"></div>
+        <div class="book" style="--bw:10px;--bh:68%;--bc:#ffe066"></div>
+        <div class="book" style="--bw:11px;--bh:72%;--bc:#ff6b9d"></div>
+      </div>
+      <div class="shelf-plank"></div>
+      <div class="shelf-row">
+        <div class="book" style="--bw:12px;--bh:82%;--bc:#ff9eb5"></div>
+        <div class="book" style="--bw:14px;--bh:88%;--bc:#c084fc"></div>
+        <div class="book" style="--bw:10px;--bh:74%;--bc:#ffb347"></div>
+        <div class="book" style="--bw:13px;--bh:90%;--bc:#7ecac0"></div>
+        <div class="book" style="--bw:11px;--bh:70%;--bc:#ff6b9d"></div>
+        <div class="book" style="--bw:15px;--bh:85%;--bc:#2a1a3e"></div>
+        <div class="book" style="--bw:10px;--bh:78%;--bc:#ffe066"></div>
+        <div class="book" style="--bw:12px;--bh:80%;--bc:#c084fc"></div>
+      </div>
+      <div class="shelf-plank"></div>
+      <div class="shelf-row">
+        <div class="book" style="--bw:11px;--bh:76%;--bc:#ffb347"></div>
+        <div class="book" style="--bw:13px;--bh:86%;--bc:#ff9eb5"></div>
+        <div class="book" style="--bw:10px;--bh:68%;--bc:#7ecac0"></div>
+        <div class="book" style="--bw:14px;--bh:88%;--bc:#c084fc"></div>
+        <div class="book" style="--bw:12px;--bh:72%;--bc:#ffe066"></div>
+        <div class="book" style="--bw:11px;--bh:84%;--bc:#ff6b9d"></div>
+        <div class="book" style="--bw:13px;--bh:78%;--bc:#2a1a3e"></div>
+        <div class="book" style="--bw:10px;--bh:82%;--bc:#ff9eb5"></div>
+      </div>
+      <div class="shelf-plank"></div>
+    </div>
+  </a>
+
+  <!-- CORKBOARD (home content hub) -->
+  <div class="room-corkboard">
+    <div class="cork-frame">
+      <div class="cork-surface">
+        <!-- Pushpins -->
+        <div class="pin" style="top:5px;left:7px;--pc:#ff6b9d"></div>
+        <div class="pin" style="top:5px;right:7px;--pc:#ffb347"></div>
+        <div class="pin" style="bottom:5px;left:7px;--pc:#c084fc"></div>
+        <div class="pin" style="bottom:5px;right:7px;--pc:#7ecac0"></div>
+
+        <!-- Sticky notes -->
+        <div class="sticky" style="background:#fffacc;top:16px;left:12px;transform:rotate(-2.5deg);max-width:130px;">
+          📢 <strong>[Apr 2025]</strong> Paper accepted at XYZ! So excited!
+        </div>
+        <div class="sticky" style="background:#ffd6e7;top:12px;left:158px;transform:rotate(1.8deg);max-width:130px;">
+          🏆 Received the XYZ Fellowship this year!
+        </div>
+        <div class="sticky" style="background:#d4f0f0;top:12px;left:300px;transform:rotate(-1.2deg);max-width:130px;">
+          🎉 Starting PhD at [University] this fall!
+        </div>
+        <div class="sticky" style="background:#e8d4f8;top:140px;left:14px;transform:rotate(2deg);max-width:130px;">
+          🌿 Talk at [Conference] — slides coming soon!
+        </div>
+
+        <!-- Photo carousel -->
+        <div class="photo-carousel">
+          <button class="car-btn car-prev" onclick="carouselNav(-1)">◀</button>
+          <div class="car-frame">
+            <div class="car-slide active"></div>
+            <div class="car-slide"></div>
+            <div class="car-slide"></div>
+          </div>
+          <button class="car-btn car-next" onclick="carouselNav(1)">▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESK -->
+  <div class="room-desk">
+    <div class="desk-top"></div>
+    <div class="desk-body"></div>
+    <div class="desk-leg desk-leg-l"></div>
+    <div class="desk-leg desk-leg-r"></div>
+  </div>
+
+  <!-- LAMP -->
+  <div class="room-lamp">
+    <div class="lamp-shade"></div>
+    <div class="lamp-glow"></div>
+    <div class="lamp-arm"></div>
+    <div class="lamp-pole"></div>
+    <div class="lamp-base"></div>
+  </div>
+
+  <!-- COMPUTER → about.html -->
+  <a href="about.html" class="room-link room-computer" data-tip="[ about me → ]">
+    <div class="monitor-back"></div>
+    <div class="monitor-screen">
+      <div class="screen-line" style="top:8px;left:5px;width:50px;background:#c084fc;height:4px;"></div>
+      <div class="screen-line" style="top:16px;left:5px;width:35px;background:#ff9eb5;height:3px;"></div>
+      <div class="screen-line" style="top:22px;left:5px;width:60px;background:#ffb347;height:3px;"></div>
+      <div class="screen-line" style="top:28px;left:5px;width:44px;background:#7ecac0;height:3px;"></div>
+      <div class="screen-line" style="top:34px;left:5px;width:28px;background:#ffe066;height:3px;"></div>
+      <div class="screen-line" style="top:40px;left:5px;width:52px;background:#ff9eb5;height:3px;"></div>
+      <div class="screen-line" style="top:48px;left:5px;width:22px;background:#c084fc;height:3px;opacity:.5;animation:blink-cur .8s step-end infinite;"></div>
+    </div>
+    <div class="monitor-stand"></div>
+    <div class="keyboard"></div>
+  </a>
+
+  <!-- MUG -->
+  <div class="room-mug">
+    <div class="mug-steam">
+      <span class="steam-line"></span>
+      <span class="steam-line"></span>
+      <span class="steam-line"></span>
+    </div>
+    <div class="mug-body"></div>
+    <div class="mug-handle"></div>
+  </div>
+
+  <!-- PAPERS → research.html -->
+  <a href="research.html" class="room-link room-papers" data-tip="[ research → ]">
+    <div class="paper p3"></div>
+    <div class="paper p2"></div>
+    <div class="paper p1"></div>
+  </a>
+
+  <!-- RUG -->
+  <div class="room-rug"></div>
+
+  <!-- CAT BED -->
+  <div class="cat-bed">
+    <div class="cat-bed-outer"></div>
+    <div class="cat-bed-inner"></div>
+  </div>
+
+  <!-- FLOOR -->
+  <div class="room-floor"></div>
+
+</div><!-- end .room -->
+
+<!-- ==================== PIXEL CAT ==================== -->
+<div class="pixel-cat" id="pixel-cat">
+  <div class="zzz-wrap">
+    <span class="zzz">z</span>
+    <span class="zzz">z</span>
+    <span class="zzz">z</span>
+  </div>
+  <!-- Black pixel cat SVG -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="38" viewBox="0 0 48 38" style="image-rendering:pixelated">
+    <!-- Ear left -->
+    <rect x="4"  y="0"  width="8" height="10" fill="#1a1a1a"/>
+    <rect x="5"  y="1"  width="5" height="7"  fill="#ff9eb5"/>
+    <!-- Ear right -->
+    <rect x="20" y="0"  width="8" height="10" fill="#1a1a1a"/>
+    <rect x="21" y="1"  width="5" height="7"  fill="#ff9eb5"/>
+    <!-- Head -->
+    <rect x="2"  y="8"  width="28" height="18" rx="2" fill="#1a1a1a"/>
+    <!-- Eyes closed (sleeping) -->
+    <rect x="7"  y="16" width="6"  height="2" fill="white" rx="1"/>
+    <rect x="19" y="16" width="6"  height="2" fill="white" rx="1"/>
+    <!-- Nose -->
+    <rect x="14" y="20" width="4"  height="2" fill="#ff9eb5"/>
+    <!-- Body -->
+    <rect x="4"  y="24" width="26" height="12" rx="2" fill="#1a1a1a"/>
+    <!-- Paws -->
+    <rect x="6"  y="33" width="7"  height="5" rx="2" fill="#1a1a1a"/>
+    <rect x="21" y="33" width="7"  height="5" rx="2" fill="#1a1a1a"/>
+    <!-- Tail (animated) -->
+    <g class="cat-tail-group">
+      <rect x="30" y="27" width="12" height="5" rx="2" fill="#1a1a1a"/>
+      <rect x="38" y="22" width="5"  height="8" rx="2" fill="#1a1a1a"/>
+    </g>
+  </svg>
+</div>
+
+<script src="js/shared.js"></script>
+<script>
+  // Secondary fairy lights inside the room top
+  (function() {
+    const bar = document.getElementById('room-lights-inner');
+    if (!bar) return;
+    const W = bar.offsetWidth || 960;
+    const H = 28;
+    const COLORS = ['#ff9eb5','#ff6b9d','#ffb347','#c084fc','#7ecac0','#ffe066'];
+    const count = Math.max(8, Math.floor(W / 42));
+    const step = W / (count - 1);
+    const wireY = i => (i % 2 === 0 ? 5 : 11);
+    let pts = '';
+    for (let i = 0; i < count; i++) pts += `${(i * step).toFixed(1)},${wireY(i)} `;
+    let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">`;
+    svg += `<polyline points="${pts}" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1"/>`;
+    for (let i = 0; i < count; i++) {
+      const x = (i * step).toFixed(1);
+      const y = wireY(i);
+      const col = COLORS[i % COLORS.length];
+      svg += `<rect x="${x-3}" y="${y+2}" width="6" height="9" rx="2" fill="${col}" opacity="0.9"/>`;
+      svg += `<ellipse cx="${x}" cy="${y+11}" rx="6" ry="4" fill="${col}" opacity="0.2"/>`;
+    }
+    svg += '</svg>';
+    bar.innerHTML = svg;
+  })();
+</script>
 </body>
 </html>
