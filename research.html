@@ -16,8 +16,31 @@
     .paper-authors    { font-size: 0.88rem; }
     .paper-venue      { font-size: 0.84rem; }
     .paper-links a    { font-size: 7px; }
-    .topic-tag        { font-size: 6px; padding: 3px 6px; }
+    .topic-tag        { font-size: 8px; padding: 4px 8px; }
     .badge-new, .badge-progress, .badge-complete { font-size: 7px; padding: 3px 7px; }
+
+    .pub-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .pub-header .section-pill { margin-bottom: 0; }
+    .filter-tags { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; align-items: center; }
+    .filter-btn {
+      font-family: var(--font-pixel);
+      font-size: 7px;
+      padding: 4px 8px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      box-shadow: 1px 1px 0 rgba(0,0,0,.25);
+      transition: transform .1s, border-color .1s;
+      line-height: 1;
+    }
+    .filter-btn:hover { transform: translate(-1px,-1px); box-shadow: 2px 2px 0 rgba(0,0,0,.25); }
+    .filter-btn.active { border-color: var(--dark); }
   </style>
 </head>
 <body class="dotted">
@@ -66,10 +89,19 @@
   <!-- ===== PUBLICATIONS (full width board) ===== -->
   <div class="board-section">
     <div class="board-section-inner">
-      <div class="section-pill pill-pink">Publications</div>
 
-      <!-- code that includes new badge -->
-      <div class="paper-card">
+      <div class="pub-header">
+        <div class="section-pill pill-pink">Publications</div>
+        <div class="filter-tags">
+          <button class="filter-btn active" data-filter="all" style="background:var(--board-frame);color:#5a2000;">ALL</button>
+          <button class="filter-btn tag-purple" data-filter="Language">Language</button>
+          <button class="filter-btn tag-pink"   data-filter="Empathy">Empathy</button>
+          <button class="filter-btn tag-teal"   data-filter="AI">AI</button>
+          <button class="filter-btn tag-orange" data-filter="Emotion">Emotion</button>
+        </div>
+      </div>
+
+      <div class="paper-card" data-tags="Language Empathy AI">
         <div style="margin-bottom:6px;">
           <span class="topic-tag tag-purple">Language</span>
           <span class="topic-tag tag-pink">Empathy</span>
@@ -80,7 +112,7 @@
           <span class="badge-new">NEW!</span>
         </div>
         <div class="paper-authors">Emma S. Gueorguieva, Hongli Zhan, Jina Suh, Javier Hernandez, Tatiana Lau, Junyi Jessy Li, Desmond C. Ong</div>
-        <div class="paper-venue"> arXiv preprint, 2026 </div>
+        <div class="paper-venue">arXiv preprint, 2026</div>
         <div class="paper-links">
           <a href="https://arxiv.org/pdf/2604.08479">[PAPER]</a>
           <a href="#">[CITE]</a>
@@ -88,7 +120,7 @@
         </div>
       </div>
 
-      <div class="paper-card">
+      <div class="paper-card" data-tags="Language Empathy AI">
         <div style="margin-bottom:6px;">
           <span class="topic-tag tag-purple">Language</span>
           <span class="topic-tag tag-pink">Empathy</span>
@@ -99,7 +131,7 @@
           <span class="badge-new">NEW!</span>
         </div>
         <div class="paper-authors">Hongli Zhan, Emma S. Gueorguieva, Javier Hernandez, Jina Suh, Desmond C. Ong, Junyi Jessy Li</div>
-        <div class="paper-venue"> arXiv preprint, 2026</div>
+        <div class="paper-venue">arXiv preprint, 2026</div>
         <div class="paper-links">
           <a href="https://arxiv.org/pdf/2604.11742">[PAPER]</a>
           <a href="#">[CITE]</a>
@@ -107,7 +139,7 @@
         </div>
       </div>
 
-      <div class="paper-card">
+      <div class="paper-card" data-tags="Language Emotion Empathy">
         <div style="margin-bottom:6px;">
           <span class="topic-tag tag-purple">Language</span>
           <span class="topic-tag tag-orange">Emotion</span>
@@ -122,7 +154,7 @@
         </div>
       </div>
 
-      <div class="paper-card">
+      <div class="paper-card" data-tags="Language Empathy">
         <div style="margin-bottom:6px;">
           <span class="topic-tag tag-purple">Language</span>
           <span class="topic-tag tag-pink">Empathy</span>
@@ -226,5 +258,22 @@
 </div>
 
 <script src="js/shared.js"></script>
+<script>
+  (function() {
+    const btns  = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.paper-card[data-tags]');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        cards.forEach(card => {
+          card.style.display =
+            (f === 'all' || card.dataset.tags.split(' ').includes(f)) ? '' : 'none';
+        });
+      });
+    });
+  })();
+</script>
 </body>
 </html>
