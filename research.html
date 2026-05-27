@@ -41,6 +41,78 @@
     }
     .filter-btn:hover { transform: translate(-1px,-1px); box-shadow: 2px 2px 0 rgba(0,0,0,.25); }
     .filter-btn.active { border-color: var(--dark); }
+
+    /* ---- Citation modal ---- */
+    .cite-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .cite-overlay.open { display: flex; }
+    .cite-modal {
+      background: #fff8f0;
+      border: 4px solid var(--board-frame);
+      box-shadow: 6px 6px 0 var(--board-dark);
+      width: min(560px, 90vw);
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .cite-modal-header {
+      background: #ff6b9d;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-pixel);
+      font-size: 8px;
+      color: #fff;
+      border-bottom: 3px solid #c84060;
+      flex-shrink: 0;
+    }
+    .cite-close {
+      font-family: var(--font-pixel);
+      font-size: 8px;
+      background: #c84060;
+      border: 2px solid #a03050;
+      color: #fff;
+      cursor: pointer;
+      padding: 3px 7px;
+      box-shadow: 1px 1px 0 #801a30;
+      line-height: 1;
+      transition: transform .1s;
+    }
+    .cite-close:hover { transform: translate(-1px,-1px); box-shadow: 2px 2px 0 #801a30; }
+    .cite-modal-body { padding: 16px; overflow-y: auto; }
+    .cite-text {
+      font-family: var(--font-pixel);
+      font-size: 7px;
+      background: #f0e8d8;
+      border: 2px solid #d4a050;
+      padding: 14px;
+      white-space: pre-wrap;
+      line-height: 2;
+      color: #3a2a10;
+      box-shadow: inset 1px 1px 0 rgba(0,0,0,.08);
+    }
+    .cite-copy {
+      font-family: var(--font-pixel);
+      font-size: 7px;
+      background: var(--board-frame);
+      border: 2px solid var(--board-dark);
+      color: #5a2000;
+      padding: 5px 10px;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--board-dark);
+      margin-top: 10px;
+      transition: transform .1s;
+      display: block;
+    }
+    .cite-copy:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--board-dark); }
   </style>
 </head>
 <body class="dotted">
@@ -111,12 +183,11 @@
           AI generates well-liked but templatic empathic responses
           <span class="badge-new">NEW!</span>
         </div>
-        <div class="paper-authors">Emma S. Gueorguieva, Hongli Zhan, Jina Suh, Javier Hernandez, Tatiana Lau, Junyi Jessy Li, Desmond C. Ong</div>
+        <div class="paper-authors"><strong>Emma S. Gueorguieva</strong>, Hongli Zhan, Jina Suh, Javier Hernandez, Tatiana Lau, Junyi Jessy Li, Desmond C. Ong</div>
         <div class="paper-venue">arXiv preprint, 2026</div>
         <div class="paper-links">
           <a href="https://arxiv.org/pdf/2604.08479">[PAPER]</a>
-          <a href="#">[CITE]</a>
-          <a href="#">[CODE]</a>
+          <a href="#" class="cite-trigger" data-cite="Gueorguieva, E., Zhan, H., Suh, J., Hernandez, J., Lau, T., Li, J. J., & Ong, D. C. (2026). AI generates well-liked but templatic empathic responses. arXiv preprint arXiv:2604.08479.">[CITE]</a>
         </div>
       </div>
 
@@ -130,11 +201,11 @@
           Discourse Diversity in Multi-Turn Empathic Dialogue
           <span class="badge-new">NEW!</span>
         </div>
-        <div class="paper-authors">Hongli Zhan, Emma S. Gueorguieva, Javier Hernandez, Jina Suh, Desmond C. Ong, Junyi Jessy Li</div>
+        <div class="paper-authors">Hongli Zhan, <strong>Emma S. Gueorguieva</strong>, Javier Hernandez, Jina Suh, Desmond C. Ong, Junyi Jessy Li</div>
         <div class="paper-venue">arXiv preprint, 2026</div>
         <div class="paper-links">
           <a href="https://arxiv.org/pdf/2604.11742">[PAPER]</a>
-          <a href="#">[CITE]</a>
+          <a href="#" class="cite-trigger" data-cite="Zhan, H., Gueorguieva, E. S., Hernandez, J., Suh, J., Ong, D. C., & Li, J. J. (2026). Discourse Diversity in Multi-Turn Empathic Dialogue. arXiv preprint arXiv:2604.11742.">[CITE]</a>
           <a href="https://github.com/honglizhan/mint-empathy">[CODE]</a>
         </div>
       </div>
@@ -146,11 +217,11 @@
           <span class="topic-tag tag-pink">Empathy</span>
         </div>
         <div class="paper-title">What can I say to help you? Language associated with successful extrinsic emotion regulation.</div>
-        <div class="paper-authors">Shaina Munin, Olivia Jurkiewicz, Emma S. Gueorguieva, Christopher Oveis, Desmond C. Ong</div>
+        <div class="paper-authors">Shaina Munin, Olivia Jurkiewicz, <strong>Emma S. Gueorguieva</strong>, Christopher Oveis, Desmond C. Ong</div>
         <div class="paper-venue">Emotion, 2025</div>
         <div class="paper-links">
           <a href="https://psycnet.apa.org/record/2026-99578-001">[PAPER]</a>
-          <a href="#">[CITE]</a>
+          <a href="#" class="cite-trigger" data-cite="Munin, S., Jurkiewicz, O., Gueorguieva, E. S., Oveis, C., & Ong, D. C. (2025). What can I say to help you? Language associated with successful extrinsic emotion regulation. Emotion.">[CITE]</a>
         </div>
       </div>
 
@@ -160,105 +231,73 @@
           <span class="topic-tag tag-pink">Empathy</span>
         </div>
         <div class="paper-title">The Language of an Empathy-Inducing Narrative</div>
-        <div class="paper-authors">Emma S. Gueorguieva, Tatiana Lau, Eliana Hadjiandreou, Desmond C. Ong</div>
+        <div class="paper-authors"><strong>Emma S. Gueorguieva</strong>, Tatiana Lau, Eliana Hadjiandreou, Desmond C. Ong</div>
         <div class="paper-venue">CogSci 2024 · 46th Proceedings of the Annual Meeting of the Cognitive Science Society</div>
         <div class="paper-links">
           <a href="https://escholarship.org/uc/item/7806b93h">[PAPER]</a>
-          <a href="#">[CITE]</a>
+          <a href="#" class="cite-trigger" data-cite="Gueorguieva, E., Lau, T., Hadjiandreou, E., & Ong, D. (2024). The language of an empathy-inducing narrative. In Proceedings of the Annual Meeting of the Cognitive Science Society (Vol. 46).">[CITE]</a>
+        </div>
+      </div>
+
+      <div class="paper-card" data-tags="Language Empathy">
+        <div style="margin-bottom:6px;">
+          <span class="topic-tag tag-purple">Language</span>
+          <span class="topic-tag tag-orange">Emotion</span>
+        </div>
+        <div class="paper-title">Words left behind: Tracking emotional changes in experimental and naturalistic texts across waves of the COVID-19 pandemic</div>
+        <div class="paper-authors"><strong>Emma S. Gueorguieva</strong>, Kiki Adams, Molly Ireland</div>
+        <div class="paper-venue">OSF preprint, 2022</div>
+        <div class="paper-links">
+          <a href="https://osf.io/preprints/psyarxiv/35p48_v1">[PAPER]</a>
+          <a href="#" class="cite-trigger" data-cite="Gueorguieva, E., Adams, K., & Ireland, M. (2023). Words left behind: Tracking emotional changes in experimental and naturalistic texts across waves of the COVID-19 pandemic.">[CITE]</a>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- ===== PROJECTS ROW (2 col) ===== -->
-  <div class="col-2">
-
-    <!-- Current Projects (left) -->
-    <div class="board-section">
-      <div class="board-section-inner">
-        <div class="section-pill pill-orange">Current Projects</div>
-
-        <div class="paper-card">
-          <span class="badge-progress">IN PROGRESS</span>
-          <div class="paper-title" style="margin-top:6px;">Project One: Working Title</div>
-          <div class="paper-authors" style="margin-top:4px;font-size:0.68rem;">A brief description of what this project is exploring and why it's interesting. Placeholder text for now.</div>
-        </div>
-
-        <div class="paper-card">
-          <span class="badge-progress">IN PROGRESS</span>
-          <div class="paper-title" style="margin-top:6px;">Project Two: Another Direction</div>
-          <div class="paper-authors" style="margin-top:4px;font-size:0.68rem;">Another exciting project in progress. More details to follow when things are more cooked.</div>
-        </div>
-
-      </div>
+<!-- Citation modal -->
+<div class="cite-overlay" id="cite-overlay">
+  <div class="cite-modal">
+    <div class="cite-modal-header">
+      <span>★ CITATION ★</span>
+      <button class="cite-close" id="cite-close">✕</button>
     </div>
-
-    <!-- Past Projects (right) -->
-    <div class="board-section">
-      <div class="board-section-inner">
-        <div class="section-pill pill-purple">Past Projects</div>
-
-        <div class="paper-card">
-          <span class="badge-complete">COMPLETED</span>
-          <div class="paper-title" style="margin-top:6px;">Past Project One: The Finished Thing</div>
-          <div class="paper-authors" style="margin-top:4px;font-size:0.68rem;">Description of a completed project. Led to a publication. Really fun work.</div>
-          <div class="paper-links" style="margin-top:6px;"><a href="#">[paper →]</a></div>
-        </div>
-
-        <div class="paper-card">
-          <span class="badge-complete">COMPLETED</span>
-          <div class="paper-title" style="margin-top:6px;">Phaser Game Project</div>
-          <div class="paper-authors" style="margin-top:4px;font-size:0.68rem;">An interactive game built as part of research on X. Try it below!</div>
-          <div class="paper-links" style="margin-top:6px;"><a href="#">[paper →]</a></div>
-          <!-- Game embed -->
-          <div class="game-card">
-            <div class="game-card-title">▶ PLAY IN BROWSER</div>
-            <iframe
-              src="https://your-game-url.github.io"
-              height="300"
-              title="Research Game"
-              allow="fullscreen"
-              loading="lazy">
-            </iframe>
-          </div>
-        </div>
-
-      </div>
+    <div class="cite-modal-body">
+      <div class="cite-text" id="cite-text"></div>
+      <button class="cite-copy" id="cite-copy">[ COPY TO CLIPBOARD ]</button>
     </div>
-
-  </div><!-- end .col-2 -->
-
-</div><!-- end .page-wrap -->
-
-<!-- Pixel cat -->
-<div class="pixel-cat" id="pixel-cat">
-  <div class="zzz-wrap">
-    <span class="zzz">z</span>
-    <span class="zzz">z</span>
-    <span class="zzz">z</span>
   </div>
-  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="38" viewBox="0 0 48 38" style="image-rendering:pixelated">
-    <rect x="4"  y="0"  width="8" height="10" fill="#1a1a1a"/>
-    <rect x="5"  y="1"  width="5" height="7"  fill="#ff9eb5"/>
-    <rect x="20" y="0"  width="8" height="10" fill="#1a1a1a"/>
-    <rect x="21" y="1"  width="5" height="7"  fill="#ff9eb5"/>
-    <rect x="2"  y="8"  width="28" height="18" rx="2" fill="#1a1a1a"/>
-    <rect x="7"  y="16" width="6"  height="2" fill="white" rx="1"/>
-    <rect x="19" y="16" width="6"  height="2" fill="white" rx="1"/>
-    <rect x="14" y="20" width="4"  height="2" fill="#ff9eb5"/>
-    <rect x="4"  y="24" width="26" height="12" rx="2" fill="#1a1a1a"/>
-    <rect x="6"  y="33" width="7"  height="5" rx="2" fill="#1a1a1a"/>
-    <rect x="21" y="33" width="7"  height="5" rx="2" fill="#1a1a1a"/>
-    <g class="cat-tail-group">
-      <rect x="30" y="27" width="12" height="5" rx="2" fill="#1a1a1a"/>
-      <rect x="38" y="22" width="5"  height="8" rx="2" fill="#1a1a1a"/>
-    </g>
-  </svg>
 </div>
 
 <script src="js/shared.js"></script>
 <script>
+  // Citation modal
+  (function() {
+    const overlay = document.getElementById('cite-overlay');
+    const textEl  = document.getElementById('cite-text');
+    const copyBtn = document.getElementById('cite-copy');
+
+    document.querySelectorAll('.cite-trigger').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        textEl.textContent = link.dataset.cite;
+        overlay.classList.add('open');
+      });
+    });
+
+    document.getElementById('cite-close').addEventListener('click', () => overlay.classList.remove('open'));
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(textEl.textContent).then(() => {
+        copyBtn.textContent = '[ COPIED! ]';
+        setTimeout(() => copyBtn.textContent = '[ COPY TO CLIPBOARD ]', 2000);
+      });
+    });
+  })();
+
+  // Filter buttons
   (function() {
     const btns  = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.paper-card[data-tags]');
