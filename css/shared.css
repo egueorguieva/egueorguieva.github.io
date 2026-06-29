@@ -100,20 +100,20 @@ body.dotted {
   white-space: nowrap;
 }
 
-.pixel-nav a[href="index.html"]    { background:#ffd0e8; border-color:#ff6b9d; color:#7a1a3a; box-shadow:3px 3px 0 #c84060; }
+.pixel-nav a[href="index.html"]    { background:#ead8fc; border-color:#c084fc; color:#3a1a5a; box-shadow:3px 3px 0 #8040c0; }
 .pixel-nav a[href="research.html"] { background:#d0f0f0; border-color:#7ecac0; color:#1a5a58; box-shadow:3px 3px 0 #4a9a98; }
-.pixel-nav a[href="about.html"]    { background:#ead8fc; border-color:#c084fc; color:#3a1a5a; box-shadow:3px 3px 0 #8040c0; }
 .pixel-nav a[href="cv.html"]       { background:#ffe8cc; border-color:#ffb347; color:#6a3000; box-shadow:3px 3px 0 #c07800; }
+.pixel-nav a[href="plain.html"]    { background:#a05c28; border-color:#6a3a10; color:#fff0d8; box-shadow:3px 3px 0 #4a2008; }
 
 .pixel-nav a:hover {
   transform: translate(-2px,-2px);
   box-shadow: 5px 5px 0 var(--board-dark);
 }
 
-.pixel-nav a[href="index.html"]:hover    { box-shadow:5px 5px 0 #c84060; }
+.pixel-nav a[href="index.html"]:hover    { box-shadow:5px 5px 0 #8040c0; }
 .pixel-nav a[href="research.html"]:hover { box-shadow:5px 5px 0 #4a9a98; }
-.pixel-nav a[href="about.html"]:hover    { box-shadow:5px 5px 0 #8040c0; }
 .pixel-nav a[href="cv.html"]:hover       { box-shadow:5px 5px 0 #c07800; }
+.pixel-nav a[href="plain.html"]:hover    { box-shadow:5px 5px 0 #4a2008; }
 
 .pixel-nav a.active {
   border-color: var(--hot-pink);
@@ -610,6 +610,39 @@ body.dotted {
 }
 
 .room-link:hover::after { opacity: 1; }
+
+/* ============================================================
+   PAGE NAV PILLS (research, cv — centered version of homepage pills)
+   ============================================================ */
+.page-nav-pills {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 8px 10px;
+  flex-wrap: wrap;
+}
+
+.room-nav-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 3px solid;
+  box-shadow: 3px 3px 0;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-family: var(--font-pixel);
+  font-size: 13px;
+  transition: transform .1s, box-shadow .1s;
+}
+.room-nav-pill:hover { transform: translate(-1px,-1px); }
+.room-nav-pill.nav-home     { background:#ead8fc; border-color:#c084fc; color:#3a1a5a; box-shadow:3px 3px 0 #8040c0; }
+.room-nav-pill.nav-research { background:#d0f0f0; border-color:#7ecac0; color:#1a5a58; box-shadow:3px 3px 0 #4a9a98; }
+.room-nav-pill.nav-cv       { background:#ffe8cc; border-color:#ffb347; color:#6a3000; box-shadow:3px 3px 0 #c07800; }
+.room-nav-pill.nav-plain    { background:#a05c28; border-color:#6a3a10; color:#fff0d8; box-shadow:3px 3px 0 #4a2008; line-height:1.8; letter-spacing:1px; text-align:center; }
+.room-nav-pill svg { width:26px; height:26px; }
 
 /* ============================================================
    RESPONSIVE

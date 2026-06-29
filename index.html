@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Emma Gueorguieva</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Caveat:wght@400;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/shared.css"/>
   <style>
     .room {
@@ -94,11 +94,11 @@
       z-index: 6;
       font-family: var(--font-pixel);
       font-size: 13px;
-      background: #ff6b9d;
+      background: #c084fc;
       color: #fff;
       padding: 8px 20px;
-      border: 2px solid #c84060;
-      box-shadow: 2px 2px 0 #c84060;
+      border: 2px solid #8040c0;
+      box-shadow: 2px 2px 0 #8040c0;
       white-space: nowrap;
     }
     .sticky {
@@ -164,16 +164,16 @@
     }
     .lamp-shade {
       width: 160px; height: 62px;
-      background: linear-gradient(160deg, #ff9eb5 30%, #e06080);
+      background: linear-gradient(160deg, #d8b0ff 30%, #a060e0);
       clip-path: polygon(22% 0%, 78% 0%, 100% 100%, 0% 100%);
-      box-shadow: 2px 2px 0 #a03060;
+      box-shadow: 2px 2px 0 #6030a0;
       position: relative;
     }
     .lamp-shade::after {
       content: '';
       position: absolute;
       inset: 6px 18px 5px;
-      background: rgba(255,200,220,.35);
+      background: rgba(200,150,255,.35);
       clip-path: polygon(18% 0%, 82% 0%, 100% 100%, 0% 100%);
     }
     .lamp-neck {
@@ -268,18 +268,18 @@
     .table-lamp { pointer-events: none; }
     .table-lamp .lamp-shade { pointer-events: auto; cursor: pointer; }
     .table-lamp.lamp-on .lamp-cone { opacity: 1; }
-    .table-lamp.lamp-on .lamp-shade { box-shadow: 2px 2px 0 #a03060, 0 0 18px rgba(255,220,60,.9); }
+    .table-lamp.lamp-on .lamp-shade { box-shadow: 2px 2px 0 #6030a0, 0 0 18px rgba(255,220,60,.9); }
 
     /* ---- Rug ---- */
     .room-rug {
       position: absolute;
-      left: 341px;
+      left: 351px;
       bottom: -12px;
       width: 960px;
       height: 46px;
-      background: var(--pink);
-      border: 4px solid #e060a0;
-      box-shadow: 2px 2px 0 #a04080;
+      background: #b080e0;
+      border: 4px solid #9060c0;
+      box-shadow: 2px 2px 0 #6040a0;
       z-index: 3;
       background-image: radial-gradient(circle, rgba(255,255,255,.15) 1px, transparent 1px);
       background-size: 12px 12px;
@@ -322,21 +322,27 @@
     .room.night-mode .room-floor::before { background: #3a2008; }
     .room.night-mode .room-rug { opacity: 0.6; }
     .room.night-mode .room-nav-name {
-      background: #3a1028;
-      border-color: #ff6b9d;
-      color: #ffb0d0;
-      box-shadow: 3px 3px 0 #801030;
+      background: #1e0a38;
+      border-color: #c084fc;
+      color: #d8b8ff;
+      box-shadow: 3px 3px 0 #6030a0;
     }
-    .room.night-mode .room-nav-pill.nav-home     { background:#3a1028; border-color:#ff6b9d; color:#ffb0d0; box-shadow:3px 3px 0 #801030; }
+    .room.night-mode .room-nav-pill.nav-home     { background:#1e0a38; border-color:#c084fc; color:#d8b8ff; box-shadow:3px 3px 0 #6030a0; }
     .room.night-mode .room-nav-pill.nav-research { background:#0a2828; border-color:#7ecac0; color:#a0e8e0; box-shadow:3px 3px 0 #206060; }
-    .room.night-mode .room-nav-pill.nav-about    { background:#1e0a38; border-color:#c084fc; color:#d8b8ff; box-shadow:3px 3px 0 #6030a0; }
     .room.night-mode .room-nav-pill.nav-cv       { background:#2a1800; border-color:#ffb347; color:#ffe0a0; box-shadow:3px 3px 0 #805000; }
+    .room.night-mode .room-nav-pill.nav-plain    { background:#2a1400; border-color:#c8843a; color:#e8c090; box-shadow:3px 3px 0 #5a2800; }
     .room.night-mode .cork-frame { background: #5a3808; }
     .room.night-mode .cork-surface { background: #7a5020; filter: brightness(0.65); }
-    .room.night-mode .cork-label { background: #c84060; }
+    .room.night-mode .cork-label { background: #8040c0; }
     .room.night-mode .sticky { filter: brightness(0.75); }
     .room.night-mode .whiteboard { background: #d8d8c8; filter: brightness(0.6); }
     .room.night-mode .room-lights svg ellipse { opacity: 0.8 !important; filter: blur(2px); }
+    .room.night-mode .room-bookshelf svg { filter: brightness(0.45); }
+    .room.night-mode .shelf-zone:hover,
+    .room.night-mode .shelf-zone.shelf-active {
+      background: rgba(255,255,150,.45);
+      box-shadow: 0 0 50px 22px rgba(255,235,60,1), inset 0 0 28px rgba(255,215,40,.85);
+    }
     .room.night-mode .filing-cabinet { filter: brightness(0.6); }
     .room.night-mode .diploma-frame { filter: brightness(0.55); }
     .room.night-mode .pixel-calendar { filter: brightness(0.6); }
@@ -367,29 +373,30 @@
       left: 50%;
       transform: translateX(-50%);
       font-family: var(--font-pixel);
-      font-size: 16px;
+      font-size: 17px;
       color: #7a1a3a;
       background: #ffe8d8;
       border: 3px solid #e8906a;
       box-shadow: 3px 3px 0 #c86040;
-      padding: 10px 26px;
+      padding: 10px 24px;
       pointer-events: auto;
       white-space: nowrap;
     }
     .room-nav-pills {
       position: absolute;
       left: 160px;
-      right: calc(50% + 210px);
       top: 0;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: flex-start;
+      align-items: stretch;
+      gap: 12px;
       pointer-events: auto;
     }
     .room-nav-pill {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       gap: 6px;
       border: 3px solid;
       box-shadow: 3px 3px 0;
@@ -400,10 +407,11 @@
       transition: transform .1s, box-shadow .1s;
     }
     .room-nav-pill:hover { transform: translate(-1px,-1px); }
-    .room-nav-pill.nav-home   { background:#ffd0e8; border-color:#ff6b9d; color:#7a1a3a; box-shadow: 3px 3px 0 #c84060; }
+    .room-nav-pill.nav-home   { background:#ead8fc; border-color:#c084fc; color:#3a1a5a; box-shadow: 3px 3px 0 #8040c0; }
     .room-nav-pill.nav-research { background:#d0f0f0; border-color:#7ecac0; color:#1a5a58; box-shadow: 3px 3px 0 #4a9a98; }
     .room-nav-pill.nav-about  { background:#ead8fc; border-color:#c084fc; color:#3a1a5a; box-shadow: 3px 3px 0 #8040c0; }
     .room-nav-pill.nav-cv     { background:#ffe8cc; border-color:#ffb347; color:#6a3000; box-shadow: 3px 3px 0 #c07800; }
+    .room-nav-pill.nav-plain  { background:#a05c28; border-color:#6a3a10; color:#fff0d8; box-shadow: 3px 3px 0 #4a2008; line-height: 1.8; letter-spacing: 1px; text-align: center; }
     .room-nav-pill svg { width:26px;height:26px; }
 
     /* ---- Diploma frames ---- */
@@ -440,13 +448,13 @@
     .diploma-ribbon {
       position: absolute;
       bottom: 60px; right: -26px;
-      background: #ff6b9d;
+      background: #c084fc;
       color: #fff;
       font-family: var(--font-pixel);
       font-size: 5px;
       padding: 3px 25px;
       transform: rotate(20deg);
-      box-shadow: 0 1px 0 #c84060;
+      box-shadow: 0 1px 0 #8040c0;
       white-space: nowrap;
     }
 
@@ -456,20 +464,20 @@
       top: 80px; right: 420px;
       width: 200px;
       background: #fff0e8;
-      border: 3px solid #ff9eb5;
-      box-shadow: 2px 2px 0 #c84060;
+      border: 3px solid #c084fc;
+      box-shadow: 2px 2px 0 #8040c0;
       z-index: 4;
       overflow: hidden;
     }
     .cal-header {
-      background: #ff9eb5;
+      background: #c084fc;
       height: 26px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-pixel);
       font-size: 9px;
-      color: #7a1a3a;
+      color: #fff;
     }
     .cal-grid {
       display: grid;
@@ -478,7 +486,7 @@
       gap: 2px;
     }
     .cal-day { font-family:var(--font-pixel);font-size:8px;color:#c86040;text-align:center;line-height:1.7; }
-    .cal-day.today { background:#ff6b9d;color:#fff;border-radius:1px; }
+    .cal-day.today { background:#c084fc;color:#fff;border-radius:1px; }
     .cal-day.hd    { color:#a07040; }
 
     /* ---- Filing cabinet ---- */
@@ -606,7 +614,7 @@
     .whiteboard {
       position: absolute;
       right: 560px;
-      top: 258px;
+      top: 243px;
       width: 635px;
       height: 230px;
       background: #f5f5f0;
@@ -616,7 +624,7 @@
       padding: 18px 22px 14px;
       display: flex;
       flex-direction: column;
-      font-family: 'Caveat', cursive;
+      font-family: 'Patrick Hand', cursive;
       overflow: visible;
     }
     .wb-tray {
@@ -723,6 +731,13 @@
       color: #333;
       line-height: 1.5;
     }
+    .wb-bio {
+      font-family: 'Patrick Hand', cursive;
+      font-size: 1.45rem;
+      color: #1a1a3a;
+      line-height: 1.55;
+    }
+    .wb-bio-gap { height: 14px; }
 
     /* ---- Notice boards ---- */
     .notice-board {
@@ -743,11 +758,11 @@
       z-index: 10;
     }
     .notice-board-header {
-      padding: 8px 12px 5px;
-      font-family: 'Caveat', cursive;
-      font-size: 1.45rem;
-      font-weight: 700;
-      text-align: left;
+      padding: 8px 12px 7px;
+      font-family: var(--font-pixel);
+      font-size: 0.72rem;
+      font-weight: normal;
+      text-align: center;
       flex-shrink: 0;
     }
     .notice-board-body {
@@ -755,17 +770,26 @@
       padding: 8px 12px 10px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      justify-content: space-evenly;
     }
+    .board-affiliations {
+      right: 1030px; top: 520px;
+      width: 260px; height: 265px;
+      background: #fef5c8;
+    }
+    .board-affiliations .notice-board-header { background: rgba(220,160,20,.2); border-bottom: 2px solid #c8940a; color: #5a3c00; }
+    .board-affiliations .board-social-link { color: #3a2800; border-bottom-color: rgba(200,148,10,.2); }
+    .board-affiliations .board-social-link:hover { color: #8a5a00; background: rgba(220,160,20,.12); }
+    .board-affiliations .board-social-icon { color: #c8940a; }
     .board-about {
-      right: 905px; top: 540px;
-      width: 315px; height: 225px;
+      right: 745px; top: 520px;
+      width: 260px; height: 265px;
       background: #ead8fc;
     }
     .board-about .notice-board-header { background: rgba(192,130,255,.2); border-bottom: 2px solid #c084fc; color: #5a10a0; }
     .board-research {
-      right: 524px; top: 540px;
-      width: 315px; height: 225px;
+      right: 460px; top: 520px;
+      width: 260px; height: 265px;
       background: #d0f0f0;
     }
     .board-research .notice-board-header { background: rgba(80,180,170,.2); border-bottom: 2px solid #7ecac0; color: #1a6060; }
@@ -776,58 +800,44 @@
       box-shadow: 1px 1px 0 rgba(0,0,0,.3);
       z-index: 2;
     }
-    .social-frames {
+    .board-social-link {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 6px 4px;
-      justify-content: center;
-    }
-    .social-frame {
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 5px;
-      width: 72px;
-      height: 72px;
-      border: 3px solid #c084fc;
-      background: #f5eaff;
-      box-shadow: 3px 3px 0 #8040c0;
-      text-decoration: none;
-      color: #5a10a0;
-      position: relative;
-      transition: transform .1s, box-shadow .1s;
-    }
-    .social-frame::after {
-      content: '';
-      position: absolute;
-      inset: 3px;
-      border: 1px solid rgba(255,255,255,.5);
-      pointer-events: none;
-    }
-    .social-frame:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 #8040c0; }
-    .social-frame svg { width: 26px; height: 26px; }
-    .social-frame-label {
+      gap: 10px;
       font-family: var(--font-pixel);
-      font-size: 5px;
-      color: #5a10a0;
+      font-size: 0.62rem;
+      color: #3a1a5a;
+      text-decoration: none;
+      padding: 6px 4px;
+      border-bottom: 1px solid rgba(192,130,255,.2);
+      transition: color .15s, background .15s;
+      line-height: 1.6;
+    }
+    .board-social-link:last-child { border-bottom: none; }
+    .board-social-link:hover { color: #9030e0; background: rgba(192,130,255,.12); }
+    .board-social-icon {
+      font-family: var(--font-pixel);
+      font-size: 9px;
+      color: #c084fc;
+      width: 18px;
       text-align: center;
-      line-height: 1.4;
+      flex-shrink: 0;
     }
     .board-item {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-family: 'Caveat', cursive;
-      font-size: 1.05rem;
+      font-family: var(--font-pixel);
+      font-size: 0.62rem;
       color: #1a3a3a;
-      line-height: 1.5;
+      line-height: 1.6;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(80,180,170,.3);
     }
+    .board-item:last-child { border-bottom: none; }
     .board-item-check {
-      font-family: 'Caveat', cursive;
-      font-size: 1.1rem;
-      font-weight: 700;
+      font-family: var(--font-pixel);
+      font-size: 0.62rem;
       color: #1a6060;
       flex-shrink: 0;
     }
@@ -972,9 +982,9 @@
         <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="1" y="6" width="12" height="8" fill="currentColor"/>
           <polygon points="7,1 0,7 14,7" fill="currentColor"/>
-          <rect x="5" y="9" width="4" height="5" fill="#ffd0e8"/>
+          <rect x="5" y="9" width="4" height="5" fill="#ead8fc"/>
         </svg>
-        HOME
+        ABOUT
       </a>
       <a href="research.html" class="room-nav-pill nav-research">
         <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -986,13 +996,6 @@
         </svg>
         RESEARCH
       </a>
-      <a href="about.html" class="room-nav-pill nav-about">
-        <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="7" cy="5" r="3" fill="currentColor"/>
-          <path d="M1 13c0-3.31 2.69-6 6-6s6 2.69 6 6" stroke="currentColor" stroke-width="1.5" fill="none"/>
-        </svg>
-        ABOUT
-      </a>
       <a href="cv.html" class="room-nav-pill nav-cv">
         <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="1" y="1" width="12" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
@@ -1002,6 +1005,7 @@
         </svg>
         CV
       </a>
+      <a href="plain.html" class="room-nav-pill nav-plain">PLAIN<br>VIEW</a>
     </div>
   </div>
 
@@ -1033,14 +1037,14 @@
 
   <!-- WHITEBOARD -->
   <div class="whiteboard">
-    <div class="wb-label">Current Question:</div>
-    <div class="wb-question">Can AI communicate empathy the same way humans do?</div>
-
-    <div class="wb-sublabel">My approach:</div>
-    <div class="wb-bullet">→ computational linguistics</div>
-    <div class="wb-bullet">→ behavioral experiments</div>
-    <div class="wb-bullet">→ large language models</div>
-
+    <div class="wb-bio">
+      <a href="https://liberalarts.utexas.edu/psychology/faculty/esg742" target="_blank" rel="noopener" style="color:#1a1a3a;font-weight:700;text-decoration:underline;text-underline-offset:3px;">4th-Year Ph.D. student in Social &amp; Personality Psychology @ The University of Texas at Austin</a>.
+    </div>
+    <div class="wb-bio-gap"></div>
+    <div class="wb-bio">
+      I study <span style="color:#8040c0;font-weight:700;">how language reflects psychological processes</span> &amp; behavior,
+      and how we can ethically develop <span style="color:#8040c0;font-weight:700;">emotionally intelligent AI systems</span>.
+    </div>
     <div class="wb-tray">
       <div class="wb-marker" style="left:14px;">
         <div class="wb-marker-tip"></div>
@@ -1061,59 +1065,45 @@
     </div>
   </div>
 
+  <!-- AFFILIATIONS notice board -->
+  <div class="notice-board board-affiliations">
+    <div class="board-pin" style="top:6px;left:6px;background:#c8940a;"></div>
+    <div class="board-pin" style="top:6px;right:6px;background:#c8940a;"></div>
+    <div class="notice-board-header">AFFILIATIONS</div>
+    <div class="notice-board-body">
+      <a href="https://cascoglab.psy.utexas.edu/index.html" class="board-social-link" target="_blank" rel="noopener">
+        <span class="board-social-icon">✦</span> CASCog Lab
+      </a>
+      <a href="https://www.nlp.utexas.edu/" class="board-social-link" target="_blank" rel="noopener">
+        <span class="board-social-icon">✦</span> UT NLP Group
+      </a>
+      <a href="https://moralconsortium.psu.edu/members/emma-gueorguieva/" class="board-social-link" target="_blank" rel="noopener">
+        <span class="board-social-icon">✦</span> Consortium on Moral Decision-Making
+      </a>
+    </div>
+  </div>
+
   <!-- ABOUT ME notice board -->
   <div class="notice-board board-about">
     <div class="board-pin" style="top:6px;left:6px;background:#c084fc;"></div>
     <div class="board-pin" style="top:6px;right:6px;background:#c084fc;"></div>
-    <div class="notice-board-header">✦ FIND ME ✦</div>
+    <div class="notice-board-header">CONTACT ME</div>
     <div class="notice-board-body">
-      <div class="social-frames">
-
-        <a href="mailto:emmagueorguieva@utexas.edu" class="social-frame">
-          <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1" y="2" width="10" height="8" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/>
-            <polyline points="1,3 6,7 11,3" stroke="currentColor" stroke-width="1.2" fill="none"/>
-          </svg>
-          <span class="social-frame-label">EMAIL</span>
-        </a>
-
-        <a href="#" class="social-frame" target="_blank" rel="noopener">
-          <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1" y="1" width="10" height="10" rx="1" fill="currentColor"/>
-            <rect x="3" y="5" width="2" height="5" fill="#f5eaff"/>
-            <rect x="3" y="3" width="2" height="2" fill="#f5eaff"/>
-            <path d="M7 7c0-1 .5-1.5 1.5-1.5S10 6 10 7v3H8V7.5" fill="#f5eaff"/>
-          </svg>
-          <span class="social-frame-label">LINKEDIN</span>
-        </a>
-
-        <a href="#" class="social-frame" target="_blank" rel="noopener">
-          <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="6,1 11,3 11,8 6,11 1,8 1,3" stroke="currentColor" stroke-width="1.2" fill="none"/>
-            <text x="3.2" y="8" font-size="5.5" fill="currentColor" font-family="sans-serif" font-weight="bold">G</text>
-          </svg>
-          <span class="social-frame-label">SCHOLAR</span>
-        </a>
-
-        <a href="#" class="social-frame" target="_blank" rel="noopener">
-          <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2" fill="none"/>
-            <text x="2.2" y="8.5" font-size="5" fill="currentColor" font-family="sans-serif" font-weight="bold">iD</text>
-          </svg>
-          <span class="social-frame-label">ORCID</span>
-        </a>
-
-        <a href="https://github.com/egueorguieva" class="social-frame" target="_blank" rel="noopener">
-          <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="6" cy="4.5" r="3.5" stroke="currentColor" stroke-width="1.2" fill="none"/>
-            <path d="M3 8c0 2 1 3 3 3s3-1 3-3" stroke="currentColor" stroke-width="1.2" fill="none"/>
-            <rect x="4" y="9" width="1.5" height="2" fill="currentColor"/>
-            <rect x="6.5" y="9" width="1.5" height="2" fill="currentColor"/>
-          </svg>
-          <span class="social-frame-label">GITHUB</span>
-        </a>
-
-      </div>
+      <a href="mailto:emmagueorguieva@utexas.edu" class="board-social-link">
+        <span class="board-social-icon">★</span> Email
+      </a>
+      <a href="https://www.linkedin.com/in/emmagueorguieva/" class="board-social-link" target="_blank" rel="noopener">
+        <span class="board-social-icon">★</span> LinkedIn
+      </a>
+      <a href="https://scholar.google.com/citations?user=0a9mGGUAAAAJ&hl=en" class="board-social-link" target="_blank" rel="noopener">
+        <span class="board-social-icon">★</span> Google Scholar
+      </a>
+      <a href="https://orcid.org/0009-0003-7621-622X" class="board-social-link" target="_blank" rel="noopener">
+        <span class="board-social-icon">★</span> ORCID
+      </a>
+      <a href="https://github.com/egueorguieva" class="board-social-link" target="_blank" rel="noopener">
+        <span class="board-social-icon">★</span> GitHub
+      </a>
     </div>
   </div>
 
@@ -1238,7 +1228,7 @@
     <div class="cork-frame">
       <div class="cork-surface">
         <!-- corner pins -->
-        <div class="pin" style="top:8px;left:7px;--pc:#ff6b9d"></div>
+        <div class="pin" style="top:8px;left:7px;--pc:#c084fc"></div>
         <div class="pin" style="top:8px;right:7px;--pc:#ffb347"></div>
         <div class="pin" style="bottom:5px;left:7px;--pc:#c084fc"></div>
         <div class="pin" style="bottom:5px;right:7px;--pc:#7ecac0"></div>
@@ -1564,7 +1554,7 @@
     const bar = document.getElementById('room-lights-inner');
     if (!bar) return;
     const H = 46;
-    const COLORS = ['#ff9eb5','#ff6b9d','#ffb347','#c084fc','#7ecac0','#ffe066'];
+    const COLORS = ['#d8b0ff','#c084fc','#ffb347','#9040d0','#7ecac0','#ffe066'];
     const wireY = i => (i % 2 === 0 ? 8 : 18);
     function drawLights() {
       const W = bar.offsetWidth || 1250;
