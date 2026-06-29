@@ -100,10 +100,20 @@ body.dotted {
   white-space: nowrap;
 }
 
+.pixel-nav a[href="index.html"]    { background:#ffd0e8; border-color:#ff6b9d; color:#7a1a3a; box-shadow:3px 3px 0 #c84060; }
+.pixel-nav a[href="research.html"] { background:#d0f0f0; border-color:#7ecac0; color:#1a5a58; box-shadow:3px 3px 0 #4a9a98; }
+.pixel-nav a[href="about.html"]    { background:#ead8fc; border-color:#c084fc; color:#3a1a5a; box-shadow:3px 3px 0 #8040c0; }
+.pixel-nav a[href="cv.html"]       { background:#ffe8cc; border-color:#ffb347; color:#6a3000; box-shadow:3px 3px 0 #c07800; }
+
 .pixel-nav a:hover {
-  transform: translate(-1px,-1px);
-  box-shadow: 4px 4px 0 var(--board-dark);
+  transform: translate(-2px,-2px);
+  box-shadow: 5px 5px 0 var(--board-dark);
 }
+
+.pixel-nav a[href="index.html"]:hover    { box-shadow:5px 5px 0 #c84060; }
+.pixel-nav a[href="research.html"]:hover { box-shadow:5px 5px 0 #4a9a98; }
+.pixel-nav a[href="about.html"]:hover    { box-shadow:5px 5px 0 #8040c0; }
+.pixel-nav a[href="cv.html"]:hover       { box-shadow:5px 5px 0 #c07800; }
 
 .pixel-nav a.active {
   border-color: var(--hot-pink);
@@ -149,14 +159,14 @@ body.dotted {
   position: fixed;
   pointer-events: none;
   z-index: 9999;
-  border-radius: 1px;
-  animation: sparkle-fade .5s ease-out forwards;
+  animation: sparkle-fade .7s ease-out forwards;
   transform: translate(-50%, -50%);
 }
 
 @keyframes sparkle-fade {
-  0%   { opacity: 1;   transform: translate(-50%,-50%) scale(1); }
-  100% { opacity: 0;   transform: translate(-50%,-50%) scale(0.1); }
+  0%   { opacity: 1;   transform: translate(-50%,-50%) scale(1)    rotate(0deg); }
+  60%  { opacity: .8; }
+  100% { opacity: 0;   transform: translate(-50%,-50%) scale(0.05) rotate(var(--rot, 180deg)); }
 }
 
 /* ============================================================
@@ -604,9 +614,18 @@ body.dotted {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+@media (max-width: 1000px) {
+  .col-3 { grid-template-columns: 1fr 1fr; }
+  .page-wrap { padding: 12px; gap: 12px; }
+  .trainer-card, .pokemon-panel { min-width: 0; }
+}
+
 @media (max-width: 680px) {
   .col-2, .col-3 { grid-template-columns: 1fr; }
   .nameplate { font-size: 5px; padding: 6px 14px; }
+  .pixel-nav { flex-wrap: wrap; justify-content: center; gap: 6px; }
   .pixel-nav a { font-size: 5px; padding: 4px 7px; }
   .cv-download-bar { flex-direction: column; text-align: center; }
+  .paper-card { padding: 10px 12px; }
+  .trainer-card, .pokemon-panel { width: 100%; }
 }

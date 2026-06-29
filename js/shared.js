@@ -60,22 +60,29 @@ function setActiveNav() {
 
 /* --- Sparkle cursor trail ---------------------------------- */
 function initSparkle() {
-  const COLORS = ['#ff9eb5','#ff6b9d','#ffb347','#c084fc','#ffe066','#7ecac0'];
-  const SIZES  = [3, 4, 5, 6, 7];
+  const COLORS = ['#ff9eb5','#ff6b9d','#ffb347','#c084fc','#ffe066','#7ecac0','#fff','#ff6b9d','#ffb347'];
+  const SHAPES = ['50%', '0', '0', '50%', '2px'];
   let last = 0;
 
   document.addEventListener('mousemove', e => {
     const now = Date.now();
-    if (now - last < 55) return;
+    if (now - last < 35) return;
     last = now;
 
-    const p = document.createElement('div');
-    p.className = 'sparkle-particle';
-    const sz  = SIZES[Math.floor(Math.random() * SIZES.length)];
-    const col = COLORS[Math.floor(Math.random() * COLORS.length)];
-    p.style.cssText = `left:${e.clientX}px;top:${e.clientY}px;width:${sz}px;height:${sz}px;background:${col};border-radius:${Math.random()>.5?'50%':'0'};`;
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), 500);
+    const count = 2 + Math.floor(Math.random() * 2);
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'sparkle-particle';
+      const sz  = 4 + Math.random() * 7;
+      const col = COLORS[Math.floor(Math.random() * COLORS.length)];
+      const br  = SHAPES[Math.floor(Math.random() * SHAPES.length)];
+      const dx  = (Math.random() - 0.5) * 18;
+      const dy  = (Math.random() - 0.5) * 18;
+      const rot = Math.random() * 360;
+      p.style.cssText = `left:${e.clientX + dx}px;top:${e.clientY + dy}px;width:${sz}px;height:${sz}px;background:${col};border-radius:${br};--rot:${rot}deg;`;
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 700);
+    }
   });
 }
 
